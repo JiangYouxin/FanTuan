@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <property name="generated.dir" value=".apt_generated" />
+    <property name="generated.absolute.dir" location="${generated.dir}" />
+    <property name="java.compilerargs" value="-s &apos;${generated.absolute.dir}&apos;" />
+
+	<target name="-pre-compile">
+        <mkdir dir="${generated.absolute.dir}" />
+	</target>
+
+    <target name="-compile" depends="-pre-build, -build-setup, -code-gen, -pre-compile">
+        <do-only-if-manifest-hasCode elseText="hasCode = false. Skipping...">
+            <!-- merge the project's own classpath and the tested project's classpath -->
+            <path id="project.javac.classpath">
+                <path refid="project.all.jars.path" />
+                <path refid="tested.project.classpath" />
+                <path path="${java.compiler.classpath}" />
+                <fileset dir="compile-libs" includes="*.jar"/>
+            </path>
+            <javac encoding="${java.encoding}"
+                source="${java.source}" target="${java.target}"
+                debug="true" extdirs="" includeantruntime="false"
+                destdir="${out.classes.absolute.dir}"
+                bootclasspathref="project.target.class.path"
+                verbose="${verbose}"
+                classpathref="project.javac.classpath"
+                fork="${need.javac.fork}">
+                <src path="${source.absolute.dir}" />
+                <src path="${gen.absolute.dir}" />
+                <compilerarg line="${java.compilerargs}" />
+            </javac>
+        </do-only-if-manifest-hasCode>
+    </target>
+</project>
