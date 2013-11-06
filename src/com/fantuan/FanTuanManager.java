@@ -52,4 +52,20 @@ public class FanTuanManager {
         mFanTuan.persons.add(p);
         notifyAllObservers();
     }
+
+    public int suggestWhoPay(String[] names) {
+        int result = -1;
+        double minCurrent = Double.MAX_VALUE;
+        for (int i = 0; i < names.length; i++) {
+            String name = names[i];
+            for (Person p: mFanTuan.persons) {
+                if (name.equals(p.name) && p.current < minCurrent) {
+                    minCurrent = p.current;
+                    result = i;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 }

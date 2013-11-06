@@ -3,6 +3,8 @@ package com.fantuan;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.text.InputType;
+import android.widget.EditText;
 
 import com.fantuan.model.Person;
 import com.fantuan.R;
@@ -57,5 +59,41 @@ public class NewDealDialog {
     }
 
     private void newDealStep2(final String[] names) {
+        final int[] whoPay = new int[] { mFanTuanManager.suggestWhoPay(names) };
+        
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.newdeal_step_2);
+        builder.setSingleChoiceItems(names, whoPay[0], new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                whoPay[0] = which;
+            }
+        });
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                newDealStep3(names, whoPay[0]);
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+    private void newDealStep3(final String[] names, final int whoPay) {
+        final EditText editView = new EditText(mActivity);
+        editView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.newdeal_step_3);
+        builder.setView(editView);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
     }
 }
