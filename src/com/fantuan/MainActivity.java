@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.googlecode.androidannotations.annotations.*; 
 
 @EActivity
+@OptionsMenu(R.menu.main_actions)
 public class MainActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle bundle) {
