@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AA饭团</string>
-    <string name="menu_add">添加</string>
+    <string name="menu_add">新成员</string>
     <string name="input_name">请输入新成员姓名</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="newdeal_step_1">请选择本次饭局参加者</string>
+    <string name="menu_newdeal">新饭局</string>
 </resources>

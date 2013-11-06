@@ -16,6 +16,9 @@ public class MainActivity extends ActionBarActivity {
     @Bean
     FanTuanManager mFanTuanManager;
 
+    @Bean
+    NewDealDialog mNewDealDialog;
+
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -48,5 +51,10 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();
+    }
+
+    @OptionsItem
+    void menu_newdeal() {
+        mNewDealDialog.newDeal();
     }
 }
