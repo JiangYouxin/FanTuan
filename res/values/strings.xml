@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">AA饭团</string>
     <string name="menu_add">添加</string>
+    <string name="input_name">请输入新成员姓名</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
 </resources>
