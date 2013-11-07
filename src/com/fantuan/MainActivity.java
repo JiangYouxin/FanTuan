@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import com.googlecode.androidannotations.annotations.*; 
 
-@EActivity
+@EActivity(R.layout.main)
 @OptionsMenu(R.menu.main_actions)
 public class MainActivity extends ActionBarActivity {
     @Bean
@@ -19,14 +20,17 @@ public class MainActivity extends ActionBarActivity {
     @Bean
     NewDealDialog mNewDealDialog;
 
-    @Override
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
+    @Bean
+    TabsAdapter mAdapter;
 
-        Fragment f = MainListFragment_.builder().build();
-        getSupportFragmentManager().beginTransaction()
-                .add(android.R.id.content, f)
-                .commit();
+    @AfterViews
+    void init() {
+        ActionBar bar = getSupportActionBar();
+        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        mAdapter.addTab(bar.newTab().setText(R.string.person_list_title),
+                MainListFragment_.class, null);
+        mAdapter.addTab(bar.newTab().setText(R.string.history_list_title),
+                HistoryListFragment_.class, null);
     }
 
     @Override

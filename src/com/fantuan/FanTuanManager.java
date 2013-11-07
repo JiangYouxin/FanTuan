@@ -1,11 +1,14 @@
 package com.fantuan;
 
 import com.fantuan.model.FanTuan;
+import com.fantuan.model.HistoryItem;
 import com.fantuan.model.Person;
 
 import android.content.Context;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.gson.Gson;
 
@@ -62,11 +65,17 @@ public class FanTuanManager {
         return mFanTuan.persons;
     }
 
+    public ArrayList<HistoryItem> getHistoryList() {
+        return mFanTuan.history;
+    }
+
     public void addNewPerson(String name) {
         Person p = new Person();
         p.name = name;
         p.current = 0.0;
         mFanTuan.persons.add(p);
+        addHistoryItem(mContext.getString(R.string.history_add_person, name));
+       
         save();
         notifyAllObservers();
     }
@@ -97,13 +106,27 @@ public class FanTuanManager {
 
     public void newDeal(String[] names, int whoPay, double current) {
         double perPerson = current / names.length;
+        String nameJoin = "";
         for (int i = 0; i < names.length; i++) {
             Person p = findPersonByName(names[i]);
             p.current -= perPerson;
             if (i == whoPay)
                 p.current += current;
+            if (i > 0)
+                nameJoin += ", ";
+            nameJoin += names[i];
         }
+        addHistoryItem(mContext.getString(R.string.history_new_deal,
+                names[whoPay], current, nameJoin));
         save();
         notifyAllObservers();
+    }
+
+    private void addHistoryItem(String content) {
+        HistoryItem item = new HistoryItem();
+        item.time = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM)
+                .format(new Date());
+        item.content = content;
+        mFanTuan.history.add(item);
     }
 }
