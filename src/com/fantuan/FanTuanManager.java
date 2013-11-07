@@ -86,4 +86,24 @@ public class FanTuanManager {
         }
         return result;
     }
+
+    private Person findPersonByName(String name) {
+        for (Person p: mFanTuan.persons) {
+            if (p.name.equals(name))
+                return p;
+        }
+        return null;
+    }
+
+    public void newDeal(String[] names, int whoPay, double current) {
+        double perPerson = current / names.length;
+        for (int i = 0; i < names.length; i++) {
+            Person p = findPersonByName(names[i]);
+            p.current -= perPerson;
+            if (i == whoPay)
+                p.current += current;
+        }
+        save();
+        notifyAllObservers();
+    }
 }

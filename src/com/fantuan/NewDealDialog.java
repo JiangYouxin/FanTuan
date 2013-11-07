@@ -90,6 +90,8 @@ public class NewDealDialog {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                double current = Double.valueOf(editView.getText().toString());
+                mFanTuanManager.newDeal(names, whoPay, current);
                 dialog.dismiss();
             }
         });
