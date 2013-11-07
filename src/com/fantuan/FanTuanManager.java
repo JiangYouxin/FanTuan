@@ -7,7 +7,10 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
 import com.googlecode.androidannotations.annotations.*; 
+import com.googlecode.androidannotations.annotations.sharedpreferences.*; 
 import com.googlecode.androidannotations.api.Scope;
 
 @EBean(scope = Scope.Singleton)
@@ -19,13 +22,27 @@ public class FanTuanManager {
     @RootContext
     Context mContext;
 
+    @Pref
+    MainPref_ mPref;
+
     private FanTuan mFanTuan;
     private ArrayList<Observer> mObservers;
+    private Gson gson = new Gson();
 
     @AfterInject
     void init() {
-        mFanTuan = new FanTuan();
+        String data = mPref.data().get();
+        if (data != null && !data.isEmpty())
+            mFanTuan = gson.fromJson(data, FanTuan.class);
+        else
+            mFanTuan = new FanTuan();
         mObservers = new ArrayList<Observer>();
+    }
+
+    @Background
+    void save() {
+        String data = gson.toJson(mFanTuan);
+        mPref.edit().data().put(data).apply();
     }
 
     private void notifyAllObservers() {
@@ -50,6 +67,7 @@ public class FanTuanManager {
         p.name = name;
         p.current = 0.0;
         mFanTuan.persons.add(p);
+        save();
         notifyAllObservers();
     }
 
