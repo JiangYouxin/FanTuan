@@ -148,4 +148,10 @@ public class FanTuanManager {
         save();
         notifyAllObservers();
     }
+
+    public void clearHistory() {
+        mFanTuan.history.clear();
+        save();
+        notifyAllObservers();
+    }
 }

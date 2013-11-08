@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import com.googlecode.androidannotations.annotations.*;
 
 @EBean
-public class PersonManageDialog {
+public class Dialogs {
     @RootContext
     Activity mActivity;
 
@@ -144,6 +144,21 @@ public class PersonManageDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mFanTuanManager.removePerson(p);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+    public void clearHistory() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.confirm_clear_history);
+        builder.setMessage(R.string.confirm_clear_history_message);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mFanTuanManager.clearHistory();
                 dialog.dismiss();
             }
         });

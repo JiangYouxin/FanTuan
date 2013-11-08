@@ -5,6 +5,7 @@ import android.support.v4.app.ListFragment;
 import com.googlecode.androidannotations.annotations.*; 
 
 @EFragment
+@OptionsMenu(R.menu.history_actions)
 public class HistoryListFragment extends ListFragment
         implements FanTuanManager.Observer {
     @Bean
@@ -12,6 +13,9 @@ public class HistoryListFragment extends ListFragment
 
     @Bean
     FanTuanManager mFanTuanManager;
+
+    @Bean
+    Dialogs mDialog;
 
     @AfterInject
     void init() {
@@ -28,5 +32,10 @@ public class HistoryListFragment extends ListFragment
     @Override
     public void onModelChanged() {
         mAdapter.refresh();
+    }
+
+    @OptionsItem
+    void menu_clear_history() {
+        mDialog.clearHistory();
     }
 }

@@ -22,7 +22,7 @@ public class MainListFragment extends ListFragment implements
     FanTuanManager mFanTuanManager;
 
     @Bean
-    PersonManageDialog mDialog;
+    Dialogs mDialog;
 
     @AfterViews
     void init() {
