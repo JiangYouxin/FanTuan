@@ -4,6 +4,11 @@
     <string name="app_name_register">新用户</string>
     <string name="menu_add">新成员</string>
     <string name="input_name">请输入新成员姓名</string>
+    <string name="input_name_modify">请输入修改后的姓名</string>
+    <string name="confirm_delete">确认离团</string>
+    <string name="confirm_delete_name" formatted="false">确认 %s 离团？</string>
+    <string name="menu_modify">修改姓名</string>
+    <string name="menu_delete">离团</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="newdeal_step_1">请选择本次饭局参加者</string>
@@ -14,4 +19,6 @@
     <string name="history_list_title">历史</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>
     <string name="history_add_person" formatted="false">添加新成员: %s</string>
+    <string name="history_modify" formatted="false">%s 改名为 %s</string>
+    <string name="history_delete" formatted="false">%s 离团。其余额 %.2f 请与其它人结清。</string>
 </resources>

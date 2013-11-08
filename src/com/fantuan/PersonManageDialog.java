@@ -21,6 +21,24 @@ public class NewDealDialog {
     @Bean
     FanTuanManager mFanTuanManager;
 
+    public void add() {
+        final EditText edit = new EditText(mActivity);
+        new AlertDialog.Builder(mActivity)
+                .setTitle(R.string.input_name)
+                .setView(edit)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = edit.getText().toString();
+                        if (name != null && !name.isEmpty())
+                            mFanTuanManager.addNewPerson(name);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+    }
+
     public void newDeal() {
         ArrayList<Person> persons = mFanTuanManager.getPersonList();
         String[] names = new String[persons.size()];
@@ -96,6 +114,40 @@ public class NewDealDialog {
             }
         });
         builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+    public void modify(final Person p) {
+        final EditText edit = new EditText(mActivity);
+        edit.setText(p.name);
+        new AlertDialog.Builder(mActivity)
+                .setTitle(R.string.input_name_modify)
+                .setView(edit)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = edit.getText().toString();
+                        if (name != null && !name.isEmpty())
+                            mFanTuanManager.modifyName(p, name);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+    }
+
+    public void delete(Person p) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.confirm_delete);
+        builder.setMessage(mActivity.getString(R.string.confirm_delete_name, p.name));
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mFanTuanManager.removePerson(p);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel);
         builder.show();
     }
 }

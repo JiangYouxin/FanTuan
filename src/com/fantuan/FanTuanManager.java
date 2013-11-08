@@ -129,4 +129,23 @@ public class FanTuanManager {
         item.content = content;
         mFanTuan.history.add(item);
     }
+
+    public void modifyName(Person p, String name) {
+        addHistoryItem(mContext.getString(R.string.history_rename, p.name, name));
+        p.name = name;
+        save();
+        notifyAllObservers();
+    }
+
+    public void removePerson(Person p) {
+        mFanTuan.persons.remove(p);
+        if (mFanTuan.persons.size() > 0) {
+            double dCurrent = -p.current / mFanTuan.persons.size();
+            for (Person person: mFanTuan.persons)
+                person.current += dCurrent;
+        }
+        addHistoryItem(mContext.getString(R.string.history_delete, p.name, p.current));
+        save();
+        notifyAllObservers();
+    }
 }

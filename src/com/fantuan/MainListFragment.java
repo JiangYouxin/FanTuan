@@ -1,8 +1,11 @@
 package com.fantuan;
 
+import com.fantuan.model.Person;
+
 import android.support.v4.app.ListFragment;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 import com.googlecode.androidannotations.annotations.*; 
@@ -10,7 +13,6 @@ import com.googlecode.androidannotations.annotations.*;
 @EFragment
 @OptionsMenu(R.menu.main_actions)
 public class MainListFragment extends ListFragment implements
-        
         FanTuanManager.Observer {
     @Bean
     PersonListAdapter mAdapter;
@@ -19,12 +21,13 @@ public class MainListFragment extends ListFragment implements
     FanTuanManager mFanTuanManager;
 
     @Bean
-    NewDealDialog mNewDealDialog;
+    PersonManageDialog mDialog;
 
-    @AfterInject
+    @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
         setListAdapter(mAdapter);
+        registerForContextMenu(getListView());
     }
 
     @Override
@@ -40,26 +43,30 @@ public class MainListFragment extends ListFragment implements
 
     @OptionsItem
     void menu_add() {
-        final EditText edit = new EditText(getActivity());
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.input_name)
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setView(edit)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String name = edit.getText().toString();
-                        if (name != null && !name.isEmpty())
-                            mFanTuanManager.addNewPerson(name);
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .show();
+        mDialog.add();
     }
 
     @OptionsItem
     void menu_newdeal() {
-        mNewDealDialog.newDeal();
+        mDialog.newDeal();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+            ContextMenu.ContextMenuInfo menuInfo) {
+        getActivity().getMenuInflater().inflate(
+                R.menu.modify_delete, menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextMenuSelected(MenuItem item) {
+        int position = item.getMenuInfo().position;
+        Person person = (Person) mAdapter.getItem(position);
+        if (item.getItemId() == R.id.menu_modify) {
+            mDialog.modify(person);
+        } else if (item.getItemId() == R.id.menu_delete) {
+            mDialog.delete(person);
+        }
     }
 }
