@@ -131,7 +131,7 @@ public class FanTuanManager {
     }
 
     public void modifyName(Person p, String name) {
-        addHistoryItem(mContext.getString(R.string.history_rename, p.name, name));
+        addHistoryItem(mContext.getString(R.string.history_modify, p.name, name));
         p.name = name;
         save();
         notifyAllObservers();

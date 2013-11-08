@@ -6,6 +6,7 @@ import android.support.v4.app.ListFragment;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 
 import com.googlecode.androidannotations.annotations.*; 
@@ -60,13 +61,15 @@ public class MainListFragment extends ListFragment implements
     }
 
     @Override
-    public boolean onContextMenuSelected(MenuItem item) {
-        int position = item.getMenuInfo().position;
+    public boolean onContextItemSelected(MenuItem item) {
+        int position = ((AdapterView.AdapterContextMenuInfo)item
+                .getMenuInfo()).position;
         Person person = (Person) mAdapter.getItem(position);
         if (item.getItemId() == R.id.menu_modify) {
             mDialog.modify(person);
         } else if (item.getItemId() == R.id.menu_delete) {
             mDialog.delete(person);
         }
+        return true;
     }
 }

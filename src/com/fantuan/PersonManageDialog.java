@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import com.googlecode.androidannotations.annotations.*;
 
 @EBean
-public class NewDealDialog {
+public class PersonManageDialog {
     @RootContext
     Activity mActivity;
 
@@ -136,7 +136,7 @@ public class NewDealDialog {
                 .show();
     }
 
-    public void delete(Person p) {
+    public void delete(final Person p) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder.setTitle(R.string.confirm_delete);
         builder.setMessage(mActivity.getString(R.string.confirm_delete_name, p.name));
@@ -147,7 +147,7 @@ public class NewDealDialog {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton(R.string.cancel);
+        builder.setNegativeButton(R.string.cancel, null);
         builder.show();
     }
 }
