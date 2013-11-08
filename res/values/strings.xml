@@ -18,6 +18,8 @@
     <string name="menu_clear_history">清空历史</string>
     <string name="person_list_title">成员</string>
     <string name="history_list_title">历史</string>
+    <string name="discover_title">发现</string>
+    <string name="more_title">更多</string>
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>
