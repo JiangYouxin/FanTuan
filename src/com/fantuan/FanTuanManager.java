@@ -127,10 +127,11 @@ public class FanTuanManager {
             return;
         double perPerson = current / count; 
         for (int i = 0; i < count; i++) {
-            String name = "成员" + (i + 1);
+            String name = mContext.getString(R.string.gen_new_name, i + 1);
             Person p = new Person();
             p.name = name;
             p.current = -perPerson;
+            p.needRename = true;
             if (i == 0)
                 p.current += current;
             mFanTuan.persons.add(p);
@@ -149,6 +150,8 @@ public class FanTuanManager {
 
     public void modifyName(Person p, String name) {
         addHistoryItem(mContext.getString(R.string.history_modify, p.name, name));
+        if (!name.equals(p.name))
+            p.needRename = false;
         p.name = name;
         save();
         notifyAllObservers();
