@@ -117,6 +117,45 @@ public class Dialogs {
         builder.show();
     }
 
+    public void newDealWelcome() {
+        final EditText editView = new EditText(mActivity);
+        editView.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.newdeal_welcome_step_1);
+        builder.setView(editView);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int count = Integer.valueOf(editView.getText().toString());
+                if (count > 0)
+                    newDealWelcomeStep2(count);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+    public void newDealWelcomeStep2(final int count) {
+        final EditText editView = new EditText(mActivity);
+        editView.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.newdeal_step_3);
+        builder.setView(editView);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                double current = Double.valueOf(editView.getText().toString());
+                mFanTuanManager.newDealWelcome(count, current);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
     public void modify(final Person p) {
         final EditText edit = new EditText(mActivity);
         edit.setText(p.name);

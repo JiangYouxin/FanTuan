@@ -13,7 +13,8 @@
     <string name="cancel">取消</string>
     <string name="newdeal_step_1">请选择本次饭局参加者</string>
     <string name="newdeal_step_2">请选择由谁买单</string>
-    <string name="newdeal_step_3">请输入买单金额</string>
+    <string name="newdeal_step_3">请输入总消费金额</string>
+    <string name="newdeal_welcome_step_1">请输入本次消费人数</string>
     <string name="menu_newdeal">新饭局</string>
     <string name="menu_clear_history">清空历史</string>
     <string name="person_list_title">成员</string>
@@ -22,6 +23,7 @@
     <string name="more_title">更多</string>
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
+    <string name="new_deal_welcome">开始记账</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>
     <string name="history_add_person" formatted="false">添加新成员: %s</string>
     <string name="history_modify" formatted="false">%s 改名为 %s</string>

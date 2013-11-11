@@ -122,6 +122,23 @@ public class FanTuanManager {
         notifyAllObservers();
     }
 
+    public void newDealWelcome(int count, double current) {
+        if (!mFanTuan.persons.isEmpty())
+            return;
+        double perPerson = current / count; 
+        for (int i = 0; i < count; i++) {
+            String name = "成员" + (i + 1);
+            Person p = new Person();
+            p.name = name;
+            p.current = -perPerson;
+            if (i == 0)
+                p.current += current;
+            mFanTuan.persons.add(p);
+        }
+        save();
+        notifyAllObservers();
+    }
+
     private void addHistoryItem(String content) {
         HistoryItem item = new HistoryItem();
         item.time = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM)
