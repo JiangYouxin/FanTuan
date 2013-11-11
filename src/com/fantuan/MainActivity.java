@@ -55,9 +55,11 @@ public class MainActivity extends ActionBarActivity implements FanTuanManager.Ob
         if (mFanTuanManager.getPersonList().isEmpty()) {
             content_layout.setVisibility(View.GONE);
             welcome_layout.setVisibility(View.VISIBLE);
+            getSupportActionBar().hide();
         } else {
             content_layout.setVisibility(View.VISIBLE);
             welcome_layout.setVisibility(View.GONE);
+            getSupportActionBar().show();
         }
     }
 
