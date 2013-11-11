@@ -159,7 +159,7 @@ public class FanTuanManager {
         if (mFanTuan.persons.size() > 0) {
             double dCurrent = -p.current / mFanTuan.persons.size();
             for (Person person: mFanTuan.persons)
-                person.current += dCurrent;
+                person.current -= dCurrent;
         }
         addHistoryItem(mContext.getString(R.string.history_delete, p.name, p.current));
         save();
