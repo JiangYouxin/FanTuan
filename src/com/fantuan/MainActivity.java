@@ -3,7 +3,10 @@ package com.fantuan;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.*; 
 
@@ -25,24 +28,33 @@ public class MainActivity extends ActionBarActivity implements FanTuanManager.Ob
     void init() {
         tab_host.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
         tab_host.addTab(
-                tab_host.newTabSpec("person").setIndicator(getString(R.string.person_list_title)),
+                tab_host.newTabSpec("person").setIndicator(createTabView(R.string.person_list_title)),
                 MainListFragment_.class,
                 null);
         tab_host.addTab(
-                tab_host.newTabSpec("history").setIndicator(getString(R.string.history_list_title)),
+                tab_host.newTabSpec("history").setIndicator(createTabView(R.string.history_list_title)),
                 HistoryListFragment_.class,
                 null);
         tab_host.addTab(
-                tab_host.newTabSpec("discover").setIndicator(getString(R.string.discover_title)),
+                tab_host.newTabSpec("discover").setIndicator(createTabView(R.string.discover_title)),
                 EmptyFragment_.class,
                 null);
         tab_host.addTab(
-                tab_host.newTabSpec("more").setIndicator(getString(R.string.more_title)),
+                tab_host.newTabSpec("more").setIndicator(createTabView(R.string.more_title)),
                 EmptyFragment_.class,
                 null);
         mFanTuanManager.registerObserver(this);
         onModelChanged();
     }
+
+	private View createTabView(int id) {
+		View view = LayoutInflater.from(this).inflate(R.layout.tabs_bg, null);
+		TextView tv = (TextView) view.findViewById(R.id.tabsText);
+		tv.setText(getString(id));
+		ImageView iv = (ImageView)view.findViewById(R.id.icon);
+		iv.setImageResource(R.drawable.ic_tab);
+		return view;
+	}
 
     @Override
     public void onDestroy() {

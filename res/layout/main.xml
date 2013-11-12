@@ -15,6 +15,7 @@
             android:layout_weight="1" />
         <android.support.v4.app.FragmentTabHost
             android:id="@+id/tab_host"
+            android:background="@drawable/tab_bg_unselected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <FrameLayout
