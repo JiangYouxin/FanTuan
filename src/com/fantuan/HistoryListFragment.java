@@ -1,12 +1,13 @@
 package com.fantuan;
 
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.googlecode.androidannotations.annotations.*; 
 
-@EFragment
-@OptionsMenu(R.menu.history_actions)
-public class HistoryListFragment extends ListFragment
+@EFragment(R.layout.history_list)
+public class HistoryListFragment extends Fragment
         implements FanTuanManager.Observer {
     @Bean
     HistoryListAdapter mAdapter;
@@ -17,10 +18,18 @@ public class HistoryListFragment extends ListFragment
     @Bean
     Dialogs mDialog;
 
-    @AfterInject
+    @ViewById
+    Button button_right;
+
+    @ViewById
+    ListView list_view;
+
+    @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
-        setListAdapter(mAdapter);
+        list_view.setAdapter(mAdapter);
+        button_right.setText(R.string.menu_clear_history);
+        onModelChanged();
     }
 
     @Override
@@ -31,11 +40,15 @@ public class HistoryListFragment extends ListFragment
 
     @Override
     public void onModelChanged() {
+        button_right.setVisibility(
+            mFanTuanManager.getHistoryList().isEmpty()
+            ? Button.GONE
+            : Button.VISIBLE);
         mAdapter.refresh();
     }
 
-    @OptionsItem
-    void menu_clear_history() {
+    @Click
+    void button_right() {
         mDialog.clearHistory();
     }
 }

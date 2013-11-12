@@ -1,7 +1,7 @@
 package com.fantuan;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.*; 
 
 @EActivity(R.layout.main)
-public class MainActivity extends ActionBarActivity implements FanTuanManager.Observer {
+public class MainActivity extends FragmentActivity implements FanTuanManager.Observer {
     @Bean
     FanTuanManager mFanTuanManager;
 
@@ -67,11 +67,9 @@ public class MainActivity extends ActionBarActivity implements FanTuanManager.Ob
         if (mFanTuanManager.getPersonList().isEmpty()) {
             content_layout.setVisibility(View.GONE);
             welcome_layout.setVisibility(View.VISIBLE);
-            getSupportActionBar().hide();
         } else {
             content_layout.setVisibility(View.VISIBLE);
             welcome_layout.setVisibility(View.GONE);
-            getSupportActionBar().show();
         }
     }
 

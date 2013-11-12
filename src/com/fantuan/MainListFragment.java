@@ -2,18 +2,19 @@ package com.fantuan;
 
 import com.fantuan.model.Person;
 
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.googlecode.androidannotations.annotations.*; 
 
-@EFragment
-@OptionsMenu(R.menu.main_actions)
-public class MainListFragment extends ListFragment implements
+@EFragment(R.layout.person_list)
+public class MainListFragment extends Fragment implements
         FanTuanManager.Observer {
     @Bean
     PersonListAdapter mAdapter;
@@ -24,11 +25,19 @@ public class MainListFragment extends ListFragment implements
     @Bean
     Dialogs mDialog;
 
+    @ViewById
+    ListView list_view;
+
+    @ViewById
+    Button button_right;
+
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
-        setListAdapter(mAdapter);
-        registerForContextMenu(getListView());
+        list_view.setAdapter(mAdapter);
+        registerForContextMenu(list_view);
+        button_right.setText(R.string.menu_add);
+        button_right.setVisibility(Button.VISIBLE);
     }
 
     @Override
@@ -42,13 +51,13 @@ public class MainListFragment extends ListFragment implements
         mAdapter.refresh();
     }
 
-    @OptionsItem
-    void menu_add() {
+    @Click
+    void button_right() {
         mDialog.add();
     }
 
-    @OptionsItem
-    void menu_newdeal() {
+    @Click
+    void newdeal() {
         mDialog.newDeal();
     }
 
