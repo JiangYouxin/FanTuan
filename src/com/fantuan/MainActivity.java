@@ -1,5 +1,6 @@
 package com.fantuan;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
@@ -12,6 +13,12 @@ import com.googlecode.androidannotations.annotations.*;
 
 @EActivity(R.layout.main)
 public class MainActivity extends FragmentActivity implements FanTuanManager.Observer {
+
+    public static int FROM_WELCOME = 1;
+
+    @Extra
+    int from;
+
     @Bean
     FanTuanManager mFanTuanManager;
 
@@ -45,6 +52,16 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
                 null);
         mFanTuanManager.registerObserver(this);
         onModelChanged();
+        handleIntent();
+    }
+
+    private void handleIntent() {
+        if (from == FROM_WELCOME) {
+            tab_host.setCurrentTab(0);
+            MainListFragment f = (MainListFragment) getSupportFragmentManager()
+                .findFragmentByTag("person");
+            f.setEditMode(false);
+        }
     }
 
 	private View createTabView(int id) {
@@ -71,6 +88,12 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
             content_layout.setVisibility(View.VISIBLE);
             welcome_layout.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent();
     }
 
     @Override

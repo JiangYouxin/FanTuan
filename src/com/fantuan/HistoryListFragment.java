@@ -22,6 +22,9 @@ public class HistoryListFragment extends Fragment
     Button button_right;
 
     @ViewById
+    Button button_back;
+
+    @ViewById
     ListView list_view;
 
     @AfterViews
@@ -29,6 +32,7 @@ public class HistoryListFragment extends Fragment
         mFanTuanManager.registerObserver(this);
         list_view.setAdapter(mAdapter);
         button_right.setText(R.string.menu_clear_history);
+        button_back.setVisibility(Button.GONE);
         onModelChanged();
     }
 

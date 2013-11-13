@@ -59,6 +59,11 @@ public class MainListFragment extends Fragment implements
                 Button.GONE: Button.VISIBLE);
     }
 
+    public void setEditMode(boolean editMode) {
+        mEditMode = editMode;
+        refreshForEditMode();
+    }
+
     @Override
     public void onDestroy() {
         mFanTuanManager.unregisterObserver(this);
@@ -72,8 +77,7 @@ public class MainListFragment extends Fragment implements
 
     @Click
     void button_right() {
-        mEditMode = !mEditMode;
-        refreshForEditMode();
+        setEditMode(!mEditMode);
     }
 
     @Click

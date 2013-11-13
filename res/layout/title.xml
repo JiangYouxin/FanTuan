@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+<com.fantuan.view.TitleView_ xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="fill_parent" 
     android:layout_height="45dp" 
     android:background="@drawable/tab_bg_unselected" 
@@ -10,11 +10,12 @@
         <Button 
             style="@style/ButtonText"
             android:id="@+id/button_back" 
+            android:text="@string/back"
             android:layout_width="wrap_content" 
             android:layout_height="wrap_content" 
             android:layout_gravity="center|left" 
             android:background="@drawable/black_button"
-            android:visibility="gone" />
+            />
     </FrameLayout>
     <TextView 
         android:id="@+id/title" 
@@ -38,4 +39,4 @@
             android:background="@drawable/black_button"
             android:visibility="gone" />
     </FrameLayout>
-</LinearLayout>
+</com.fantuan.view.TitleView_>

@@ -40,7 +40,7 @@ public class PersonView extends LinearLayout {
         text1.setText(p.name);
         text2.setText(String.format("%.2f", p.current));
         text2.setTextColor(p.current >= 0 ? 0xff70c656: 0xffef4444);
-        rename.setVisibility(editMode ? TextView.VISIBLE: TextView.GONE);
+        rename.setVisibility(editMode || p.needRename ? TextView.VISIBLE: TextView.GONE);
         delete.setVisibility(editMode ? TextView.VISIBLE: TextView.GONE);
     }
 
