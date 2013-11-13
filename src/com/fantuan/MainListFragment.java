@@ -87,7 +87,7 @@ public class MainListFragment extends Fragment implements
 
     @Click
     void newdeal() {
-        mDialog.newDeal();
+        NewDealStep1Activity_.intent(getActivity()).start();
     }
 
     @Override

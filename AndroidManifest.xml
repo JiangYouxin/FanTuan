@@ -15,9 +15,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name="FirstActivity_"
             android:label="@string/new_deal_welcome"
+            android:launchMode="singleTop"
+            android:theme="@style/CustomTheme">
+        </activity>
+        <activity
+            android:name="NewDealStep1Activity_"
+            android:label="@string/menu_newdeal"
+            android:launchMode="singleTop"
+            android:theme="@style/CustomTheme">
+        </activity>
+        <activity
+            android:name="NewDealStep2Activity_"
+            android:label="@string/menu_newdeal"
+            android:launchMode="singleTop"
+            android:theme="@style/CustomTheme">
+        </activity>
+        <activity
+            android:name="NewDealStep3Activity_"
+            android:label="@string/menu_newdeal"
             android:launchMode="singleTop"
             android:theme="@style/CustomTheme">
         </activity>

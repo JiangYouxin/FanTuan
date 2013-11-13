@@ -15,6 +15,7 @@ import com.googlecode.androidannotations.annotations.*;
 public class MainActivity extends FragmentActivity implements FanTuanManager.Observer {
 
     public static int FROM_WELCOME = 1;
+    public static int FROM_NEWDEAL = 2;
 
     @Extra
     int from;
