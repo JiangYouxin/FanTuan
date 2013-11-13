@@ -5,6 +5,7 @@ import com.fantuan.R;
 import com.fantuan.model.Person;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,9 @@ public class PersonView extends LinearLayout {
     @ViewById
     TextView rename;
 
+    @ViewById
+    TextView delete;
+
     @Bean
     Dialogs mDialogs;
 
@@ -31,15 +35,22 @@ public class PersonView extends LinearLayout {
         super(context);
     }
 
-    public void bind(Person p) {
+    public void bind(Person p, boolean editMode) {
         this.p = p;
         text1.setText(p.name);
         text2.setText(String.format("%.2f", p.current));
-        rename.setVisibility(p.needRename ? TextView.VISIBLE: TextView.GONE);
+        text2.setTextColor(p.current >= 0 ? 0xff70c656: 0xffef4444);
+        rename.setVisibility(editMode ? TextView.VISIBLE: TextView.GONE);
+        delete.setVisibility(editMode ? TextView.VISIBLE: TextView.GONE);
     }
 
     @Click
     void rename() {
         mDialogs.modify(p);
+    }
+
+    @Click
+    void delete() {
+        mDialogs.delete(p);
     }
 }

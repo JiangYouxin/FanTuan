@@ -21,6 +21,13 @@ public class PersonListAdapter extends BaseAdapter {
     @RootContext
     Context mContext;
 
+    private boolean mEditMode;
+
+    public void setEditMode(boolean editMode) {
+        mEditMode = editMode;
+        notifyDataSetChanged();
+    }
+
     @Override
     public Person getItem(int position) {
         return mFanTuanManager.getPersonList().get(position);
@@ -43,7 +50,7 @@ public class PersonListAdapter extends BaseAdapter {
             personView = PersonView_.build(mContext);
         else
             personView = (PersonView) convertView;
-        personView.bind(getItem(position));
+        personView.bind(getItem(position), mEditMode);
         return personView;
     }
 

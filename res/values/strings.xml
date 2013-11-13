@@ -9,6 +9,8 @@
     <string name="confirm_delete_name" formatted="false">确认 %s 离团？</string>
     <string name="menu_modify">改名</string>
     <string name="menu_delete">离团</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="newdeal_step_1">请选择本次饭局参加者</string>
