@@ -39,7 +39,7 @@ public class HistoryListAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(
-                   android.R.layout.simple_list_item_2, null);
+                   R.layout.twoline, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
