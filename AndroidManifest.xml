@@ -17,6 +17,7 @@
         </activity>
         <activity 
             android:name="FirstActivity_"
+            android:label="@string/new_deal_welcome"
             android:launchMode="singleTop"
             android:theme="@style/CustomTheme">
         </activity>

@@ -21,6 +21,14 @@ public class TitleView extends LinearLayout {
         super(context, attrs);
     }
 
+    @ViewById
+    TextView title;
+
+    @AfterViews
+    void init() {
+        title.setText(((Activity)getContext()).getTitle());
+    }
+
     @Click
     void button_back() {
         ((Activity)getContext()).finish();
