@@ -27,7 +27,7 @@ public class FirstActivity extends FragmentActivity {
         try {
             double db = Double.valueOf(current.getText().toString());
             int it = Integer.valueOf(count.getText().toString());
-            commit.setEnabled(db > 0 && it > 0);
+            commit.setEnabled(db > 0 && it > 1);
         } catch (Exception e) {
             commit.setEnabled(false);
         }
@@ -35,12 +35,9 @@ public class FirstActivity extends FragmentActivity {
 
     @Click
     void commit() {
-        mFanTuanManager.newDealWelcome(
-                Integer.valueOf(count.getText().toString()),
-                Double.valueOf(current.getText().toString()));
-        MainActivity_.intent(this)
-            .from(MainActivity.FROM_WELCOME)
-            .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        NewDealStep4Activity_.intent(this)
+            .count(Integer.valueOf(count.getText().toString()))
+            .current(Double.valueOf(current.getText().toString()))
             .start();
     }
 }

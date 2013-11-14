@@ -45,6 +45,7 @@ public class MainListFragment extends Fragment implements
         button_back.setText(R.string.menu_add);
         refreshForEditMode();
         button_right.setVisibility(Button.VISIBLE);
+        mAdapter.setPersonList(mFanTuanManager.getPersonList());
         list_view.setAdapter(mAdapter);
         registerForContextMenu(list_view);
     }

@@ -11,6 +11,7 @@
     <string name="menu_delete">离团</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
+    <string name="make">生成账单</string>
     <string name="back">返回</string>
     <string name="next">下一步</string>
     <string name="ok">确定</string>
@@ -27,6 +28,8 @@
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
     <string name="welcome_message">今天您AA了吗？\n使用AA团记账，免去每次结现金的麻烦。</string>
+    <string name="new_deal_message">以下记录将合并至账单</string>
+    <string name="new_deal_message_welcome">账单已生成。\n所有临时生成的姓名随后均可修改。</string>
     <string name="new_deal_welcome">第一次记账</string>
     <string name="newdeal_step_1" formatted="false">请选择参加者 (已选择 %d 人)</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>

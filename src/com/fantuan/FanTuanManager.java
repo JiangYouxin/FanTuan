@@ -81,7 +81,7 @@ public class FanTuanManager {
     }
 
     public int suggestWhoPay(String[] names) {
-        int result = -1;
+        int result = 0;
         double minCurrent = Double.MAX_VALUE;
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
@@ -96,45 +96,42 @@ public class FanTuanManager {
         return result;
     }
 
-    private Person findPersonByName(String name) {
+    private Person findPersonByNameOrAddNew(String name) {
         for (Person p: mFanTuan.persons) {
             if (p.name.equals(name))
                 return p;
         }
-        return null;
+        Person p = new Person();
+        p.name = name;
+        mFanTuan.persons.add(p);
+        return p;
     }
 
-    public void newDeal(String[] names, int whoPay, double current) {
+    public ArrayList<Person> generatePersonList(String [] names, int whoPay, double current) {
+        ArrayList<Person> list = new ArrayList<Person>();
         double perPerson = current / names.length;
-        String nameJoin = "";
         for (int i = 0; i < names.length; i++) {
-            Person p = findPersonByName(names[i]);
-            p.current -= perPerson;
+            Person p = new Person();
+            p.name = names[i]; 
+            p.current = -perPerson;
             if (i == whoPay)
                 p.current += current;
-            if (i > 0)
-                nameJoin += ", ";
-            nameJoin += names[i];
+            list.add(p);
         }
-        addHistoryItem(mContext.getString(R.string.history_new_deal,
-                names[whoPay], current, nameJoin));
-        save();
-        notifyAllObservers();
+        return list;
     }
 
-    public void newDealWelcome(int count, double current) {
-        if (!mFanTuan.persons.isEmpty())
-            return;
-        double perPerson = current / count; 
-        for (int i = 0; i < count; i++) {
-            String name = mContext.getString(R.string.gen_new_name, i + 1);
-            Person p = new Person();
-            p.name = name;
-            p.current = -perPerson;
-            p.needRename = true;
-            if (i == 0)
-                p.current += current;
-            mFanTuan.persons.add(p);
+    public ArrayList<Person> generatePersonList(int count, double current) {
+        String[] names = new String[count];
+        for (int i = 0; i < count; i++) 
+            names[i] = mContext.getString(R.string.gen_new_name, i + 1);
+        return generatePersonList(names, 0, current);
+    }
+
+    public void mergePersonList(ArrayList<Person> list) {
+        for (Person person: list) {
+            Person p = findPersonByNameOrAddNew(person.name);
+            p.current += person.current;
         }
         save();
         notifyAllObservers();

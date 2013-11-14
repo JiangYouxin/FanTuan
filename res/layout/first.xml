@@ -41,7 +41,7 @@
         />
     <Button 
         android:id="@+id/commit"
-        android:text="@string/finish"
+        android:text="@string/make"
         android:background="@drawable/green_button"
         style="@style/ButtonText"
         android:layout_width="match_parent"

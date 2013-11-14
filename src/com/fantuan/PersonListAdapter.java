@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import com.googlecode.androidannotations.annotations.*;
 
 @EBean
@@ -21,6 +23,8 @@ public class PersonListAdapter extends BaseAdapter {
     @RootContext
     Context mContext;
 
+    private ArrayList<Person> mPersonList;
+
     private boolean mEditMode;
 
     public void setEditMode(boolean editMode) {
@@ -28,14 +32,18 @@ public class PersonListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public void setPersonList(ArrayList<Person> personList) {
+        mPersonList = personList;
+    }
+
     @Override
     public Person getItem(int position) {
-        return mFanTuanManager.getPersonList().get(position);
+        return mPersonList.get(position);
     }
 
     @Override
     public int getCount() {
-        return mFanTuanManager.getPersonList().size();
+        return mPersonList.size();
     }
 
     @Override

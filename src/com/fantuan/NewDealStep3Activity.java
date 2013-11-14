@@ -38,10 +38,10 @@ public class NewDealStep3Activity extends FragmentActivity {
     @Click
     void commit() {
         double db = Double.valueOf(current.getText().toString());
-        mFanTuanManager.newDeal(names, whoPay, db);
-        MainActivity_.intent(this)
-            .from(MainActivity.FROM_NEWDEAL)
-            .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        NewDealStep4Activity_.intent(this)
+            .names(names)
+            .whoPay(whoPay)
+            .current(db)
             .start();
     }
 }
