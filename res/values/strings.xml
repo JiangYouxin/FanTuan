@@ -2,8 +2,9 @@
 <resources>
     <string name="app_name">AA团</string>
     <string name="app_name_register">新用户</string>
-    <string name="menu_add">新成员</string>
+    <string name="menu_add">添加新成员</string>
     <string name="input_name">请输入新成员姓名</string>
+    <string name="name_exists">姓名已存在</string>
     <string name="input_name_modify">请输入修改后的姓名</string>
     <string name="confirm_delete">确认离团</string>
     <string name="confirm_delete_name" formatted="false">确认 %s 离团？</string>
@@ -16,7 +17,6 @@
     <string name="next">下一步</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="newdeal_step_2">请选择由谁买单</string>
     <string name="newdeal_step_3">请输入总消费金额</string>
     <string name="newdeal_welcome_step_1">请输入本次消费人数</string>
     <string name="menu_newdeal">记一笔</string>
@@ -29,9 +29,10 @@
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
     <string name="welcome_message">今天您AA了吗？\n使用AA团记账，免去每次结现金的麻烦。</string>
     <string name="new_deal_message">以下记录将合并至账单</string>
-    <string name="new_deal_message_welcome">账单已生成。\n所有临时生成的姓名随后均可修改。</string>
+    <string name="new_deal_message_welcome">账单已生成\n所有临时生成的姓名随后均可修改</string>
     <string name="new_deal_welcome">第一次记账</string>
     <string name="newdeal_step_1" formatted="false">请选择参加者 (已选择 %d 人)</string>
+    <string name="newdeal_step_2" formatted="false">请选择由谁买单\n当前选择 %s (余额 %.2f)</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>
     <string name="history_add_person" formatted="false">添加新成员: %s</string>
     <string name="history_modify" formatted="false">%s 改名为 %s</string>

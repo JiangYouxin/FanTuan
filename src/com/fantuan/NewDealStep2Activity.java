@@ -36,10 +36,10 @@ public class NewDealStep2Activity extends FragmentActivity {
     void init() {
         mAdapter = new CustomAdapter();
         header = (TextView) getLayoutInflater().inflate(R.layout.list_header, null);
-        header.setText(R.string.newdeal_step_2);
         list_view.addHeaderView(header);
         list_view.setAdapter(mAdapter);
         button_right.setVisibility(Button.VISIBLE);
+        whoPay = mFanTuanManager.suggestWhoPay(names);
         refresh();
     }
 
@@ -60,6 +60,9 @@ public class NewDealStep2Activity extends FragmentActivity {
     }
 
     private void refresh() {
+        String name = names[whoPay];
+        double current = mFanTuanManager.getCurrentByName(name);
+        header.setText(getString(R.string.newdeal_step_2, name, current));
         mAdapter.notifyDataSetChanged();
     }
 

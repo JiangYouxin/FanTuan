@@ -69,31 +69,26 @@ public class FanTuanManager {
         return mFanTuan.history;
     }
 
-    public void addNewPerson(String name) {
-        Person p = new Person();
-        p.name = name;
-        p.current = 0.0;
-        mFanTuan.persons.add(p);
-        addHistoryItem(mContext.getString(R.string.history_add_person, name));
-       
-        save();
-        notifyAllObservers();
-    }
-
     public int suggestWhoPay(String[] names) {
         int result = 0;
         double minCurrent = Double.MAX_VALUE;
         for (int i = 0; i < names.length; i++) {
             String name = names[i];
-            for (Person p: mFanTuan.persons) {
-                if (name.equals(p.name) && p.current < minCurrent) {
-                    minCurrent = p.current;
-                    result = i;
-                    break;
-                }
+            double current = getCurrentByName(name);
+            if (current < minCurrent) {
+                minCurrent = current;
+                result = i;
             }
         }
         return result;
+    }
+
+    public double getCurrentByName(String name) {
+        for (Person p: mFanTuan.persons) {
+            if (name.equals(p.name))
+                return p.current;
+        }
+        return 0;
     }
 
     private Person findPersonByNameOrAddNew(String name) {

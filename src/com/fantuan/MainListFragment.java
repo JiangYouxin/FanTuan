@@ -42,7 +42,7 @@ public class MainListFragment extends Fragment implements
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
-        button_back.setText(R.string.menu_add);
+        button_back.setVisibility(Button.GONE);
         refreshForEditMode();
         button_right.setVisibility(Button.VISIBLE);
         mAdapter.setPersonList(mFanTuanManager.getPersonList());
@@ -54,8 +54,6 @@ public class MainListFragment extends Fragment implements
         mAdapter.setEditMode(mEditMode);
         button_right.setText(mEditMode ? 
                 R.string.finish: R.string.edit);
-        button_back.setVisibility(mEditMode ? 
-                Button.VISIBLE : Button.GONE);
         newdeal.setVisibility(mEditMode ? 
                 Button.GONE: Button.VISIBLE);
     }
@@ -79,11 +77,6 @@ public class MainListFragment extends Fragment implements
     @Click
     void button_right() {
         setEditMode(!mEditMode);
-    }
-
-    @Click
-    void button_back() {
-        mDialog.add();
     }
 
     @Click

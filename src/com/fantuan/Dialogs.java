@@ -22,21 +22,6 @@ public class Dialogs {
     FanTuanManager mFanTuanManager;
 
     public void add() {
-        final EditText edit = new EditText(mActivity);
-        new AlertDialog.Builder(mActivity)
-                .setTitle(R.string.input_name)
-                .setView(edit)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String name = edit.getText().toString();
-                        if (name != null && !name.isEmpty())
-                            mFanTuanManager.addNewPerson(name);
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .show();
     }
 
     public void modify(final Person p) {
