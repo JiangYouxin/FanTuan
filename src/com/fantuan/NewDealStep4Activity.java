@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import com.googlecode.androidannotations.annotations.*; 
 
-@EActivity(R.layout.history_list)
+@EActivity(R.layout.list_with_header)
 public class NewDealStep4Activity extends FragmentActivity implements View.OnClickListener { 
     @Bean
     FanTuanManager mFanTuanManager;
@@ -29,29 +29,30 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     int whoPay;
 
     @Extra
-    int count;
+    double current;
 
     @Extra
-    double current;
+    int messageId;
+
+    @Extra
+    boolean sendResult;
 
     @Bean
     PersonListAdapter mAdapter;
+
+    @ViewById
+    TextView list_header;
 
     private TextView header;
     private ArrayList<Person> mPersonList;
 
     @AfterViews
     void init() {
-        if (names == null)
-            mPersonList = mFanTuanManager.generatePersonList(count, current);
-        else
-            mPersonList = mFanTuanManager.generatePersonList(names, whoPay, current);
+        mPersonList = mFanTuanManager.generatePersonList(names, whoPay, current);
         mAdapter.setPersonList(mPersonList);
-        header = (TextView) getLayoutInflater().inflate(R.layout.list_header, null);
-        header.setText(names == null ? R.string.new_deal_message_welcome : R.string.new_deal_message);
+        list_header.setText(messageId);
         View button = getLayoutInflater().inflate(R.layout.button, null);
         button.findViewById(R.id.commit).setOnClickListener(this);
-        list_view.addHeaderView(header);
         list_view.addFooterView(button);
         list_view.setAdapter(mAdapter);
     }
@@ -59,9 +60,14 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         mFanTuanManager.mergePersonList(mPersonList);
-        MainActivity_.intent(this)
-            .from(names == null ? MainActivity.FROM_WELCOME : MainActivity.FROM_NEWDEAL)
-            .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            .start();
+        if (sendResult) {
+            setResult(0);
+            finish();
+        }
+        else {
+            MainActivity_.intent(this)
+                .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .start();
+        }
     }
 }

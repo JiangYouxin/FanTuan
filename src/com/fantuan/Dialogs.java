@@ -51,19 +51,6 @@ public class Dialogs {
             .show();
     }
 
-    public void delete(final Person p) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle(mActivity.getString(R.string.confirm_delete_name, p.name));
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mFanTuanManager.removePerson(p);
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, null);
-        builder.show();
-    }
-
     public void clearHistory() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder.setTitle(R.string.confirm_clear_history_message);

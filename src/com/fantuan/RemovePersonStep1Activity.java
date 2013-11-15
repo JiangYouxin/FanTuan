@@ -1,5 +1,8 @@
 package com.fantuan;
 
+import com.fantuan.model.Person;
+
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +13,12 @@ import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import com.googlecode.androidannotations.annotations.*; 
 
 @EActivity(R.layout.list_with_header)
-public class NewDealStep2Activity extends FragmentActivity { 
+public class RemovePersonStep1Activity extends FragmentActivity { 
     @Bean
     FanTuanManager mFanTuanManager;
 
@@ -24,10 +29,12 @@ public class NewDealStep2Activity extends FragmentActivity {
     Button button_right;
 
     @Extra
-    String[] names;
+    String nameToRemove;
 
     @ViewById
     TextView list_header;
+
+    private ArrayList<String> names;
 
     private int whoPay;
 
@@ -35,19 +42,41 @@ public class NewDealStep2Activity extends FragmentActivity {
 
     @AfterViews
     void init() {
+        names = new ArrayList<String>();
+        for (Person p: mFanTuanManager.getPersonList()) {
+            if (!p.name.equals(nameToRemove))
+                names.add(p.name);
+        }
         mAdapter = new CustomAdapter();
         list_view.setAdapter(mAdapter);
+        list_header.setText(getString(R.string.remove_person_select,
+                nameToRemove));
         button_right.setVisibility(Button.VISIBLE);
-        whoPay = mFanTuanManager.suggestWhoPay(names);
+        whoPay = 0;
         refresh();
     }
 
     @Click
     void button_right() {
-        NewDealStep3Activity_.intent(this)
+        String[] names = new String[] {nameToRemove, this.names.get(whoPay) };
+        double current = mFanTuanManager.getCurrentByName(nameToRemove) * 2;
+        NewDealStep4Activity_.intent(this)
             .names(names)
-            .whoPay(whoPay)
-            .start();
+            .whoPay(1)
+            .current(current)
+            .messageId(R.string.new_deal_message)
+            .sendResult(true)
+            .startForResult(0);
+    }
+
+    @Override
+    protected void onActivityResult(int code, int resultCode, Intent data) {
+        if (code == 0 && resultCode == 0) {
+            mFanTuanManager.removePerson(nameToRemove);
+            MainActivity_.intent(this)
+                .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .start();
+        }
     }
 
     @ItemClick
@@ -57,16 +86,13 @@ public class NewDealStep2Activity extends FragmentActivity {
     }
 
     private void refresh() {
-        String name = names[whoPay];
-        double current = mFanTuanManager.getCurrentByName(name);
-        list_header.setText(getString(R.string.newdeal_step_2, name, current));
         mAdapter.notifyDataSetChanged();
     }
 
     private class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return names.length;
+            return names.size();
         }
         @Override
         public long getItemId(int position) {
@@ -74,14 +100,14 @@ public class NewDealStep2Activity extends FragmentActivity {
         }
         @Override
         public String getItem(int position) {
-            return names[position];
+            return names.get(position);
         }
         @Override
         public View getView(int position, View convertView, ViewGroup container) {
             if (convertView == null)
                 convertView = getLayoutInflater().inflate(R.layout.radio_button, null);
             CheckedTextView tv = (CheckedTextView) convertView;
-            tv.setText(names[position]);
+            tv.setText(names.get(position));
             tv.setChecked(position == whoPay);
             return tv;
         }

@@ -6,10 +6,9 @@
     <string name="input_name">请输入新成员姓名</string>
     <string name="name_exists">姓名已存在</string>
     <string name="input_name_modify">请输入修改后的姓名</string>
-    <string name="confirm_delete">确认离团</string>
-    <string name="confirm_delete_name" formatted="false">确认 %s 离团？</string>
     <string name="menu_modify">改名</string>
     <string name="menu_delete">离团</string>
+    <string name="remove_person_select">%s 准备离团。\n请选择一人与Ta结算余额。</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
     <string name="make">生成账单</string>

@@ -94,6 +94,8 @@ public class MainListFragment extends Fragment implements
             ContextMenu.ContextMenuInfo menuInfo) {
         getActivity().getMenuInflater().inflate(
                 R.menu.modify_delete, menu);
+        if (mAdapter.getCount() <= 2)
+            menu.removeItem(R.id.menu_delete);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
@@ -105,7 +107,9 @@ public class MainListFragment extends Fragment implements
         if (item.getItemId() == R.id.menu_modify) {
             mDialog.modify(person);
         } else if (item.getItemId() == R.id.menu_delete) {
-            mDialog.delete(person);
+            RemovePersonStep1Activity_.intent(getActivity())
+                .nameToRemove(person.name)
+                .start();
         }
         return true;
     }

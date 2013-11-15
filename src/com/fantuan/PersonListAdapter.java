@@ -58,7 +58,7 @@ public class PersonListAdapter extends BaseAdapter {
             personView = PersonView_.build(mContext);
         else
             personView = (PersonView) convertView;
-        personView.bind(getItem(position), mEditMode);
+        personView.bind(getItem(position), mEditMode, getCount() > 2);
         return personView;
     }
 

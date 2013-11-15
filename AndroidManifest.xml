@@ -45,5 +45,11 @@
             android:launchMode="singleTop"
             android:theme="@style/CustomTheme">
         </activity>
+        <activity
+            android:name="RemovePersonStep1Activity_"
+            android:label="@string/menu_delete"
+            android:launchMode="singleTop"
+            android:theme="@style/CustomTheme">
+        </activity>
     </application>
 </manifest> 

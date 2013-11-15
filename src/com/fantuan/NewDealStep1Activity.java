@@ -23,7 +23,7 @@ import java.util.HashSet;
 import com.googlecode.androidannotations.annotations.*; 
 import com.googlecode.androidannotations.annotations.sharedpreferences.*; 
 
-@EActivity(R.layout.history_list)
+@EActivity(R.layout.list_with_header)
 public class NewDealStep1Activity extends FragmentActivity implements View.OnClickListener { 
     @Pref
     MainPref_ mPref;
@@ -40,13 +40,14 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
     @Bean
     Dialogs mDialogs;
 
+    @ViewById
+    TextView list_header;
+
     private String[] names;
 
     private boolean[] selected;
 
     private BaseAdapter mAdapter;
-
-    private TextView header;
 
     private Gson gson = new Gson();
 
@@ -78,10 +79,8 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
     void init() {
         initData();
         mAdapter = new CustomAdapter();
-        header = (TextView) getLayoutInflater().inflate(R.layout.list_header, null);
         View footer = getLayoutInflater().inflate(R.layout.gray_button, null);
         footer.findViewById(R.id.add_new).setOnClickListener(this);
-        list_view.addHeaderView(header);
         list_view.addFooterView(footer);
         list_view.setAdapter(mAdapter);
         button_right.setVisibility(Button.VISIBLE);
@@ -152,18 +151,15 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
 
     @ItemClick
     void list_viewItemClicked(int position) {
-        if (position > 0) {
-            position--;
-            selected[position] = !selected[position];
-            mAdapter.notifyDataSetChanged();
-            refresh();
-        }
+        selected[position] = !selected[position];
+        mAdapter.notifyDataSetChanged();
+        refresh();
     }
 
     void refresh() {
         int count = getSelectedCount();
         button_right.setEnabled(count >= 2);
-        header.setText(getString(R.string.newdeal_step_1, count));
+        list_header.setText(getString(R.string.newdeal_step_1, count));
     }
 
     private int getSelectedCount() {

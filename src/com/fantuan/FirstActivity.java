@@ -35,9 +35,14 @@ public class FirstActivity extends FragmentActivity {
 
     @Click
     void commit() {
+        String[] names = mFanTuanManager.generateNames(
+            Integer.valueOf(count.getText().toString()));
+
         NewDealStep4Activity_.intent(this)
-            .count(Integer.valueOf(count.getText().toString()))
+            .names(names)
+            .whoPay(0)
             .current(Double.valueOf(current.getText().toString()))
+            .messageId(R.string.new_deal_message_welcome)
             .start();
     }
 }

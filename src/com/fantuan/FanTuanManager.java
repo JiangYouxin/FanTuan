@@ -127,11 +127,11 @@ public class FanTuanManager {
         return list;
     }
 
-    public ArrayList<Person> generatePersonList(int count, double current) {
+    public String[] generateNames(int count) {
         String[] names = new String[count];
         for (int i = 0; i < count; i++) 
             names[i] = mContext.getString(R.string.gen_new_name, i + 1);
-        return generatePersonList(names, 0, current);
+        return names;
     }
 
     public void mergePersonList(ArrayList<Person> list) {
@@ -160,16 +160,13 @@ public class FanTuanManager {
         notifyAllObservers();
     }
 
-    public void removePerson(Person p) {
-        mFanTuan.persons.remove(p);
-        if (mFanTuan.persons.size() > 0) {
-            double dCurrent = -p.current / mFanTuan.persons.size();
-            for (Person person: mFanTuan.persons)
-                person.current -= dCurrent;
+    public void removePerson(String name) {
+        Person p = findPersonByName(name);
+        if (p != null) {
+            mFanTuan.persons.remove(p);
+            save();
+            notifyAllObservers();
         }
-        addHistoryItem(mContext.getString(R.string.history_delete, p.name, p.current));
-        save();
-        notifyAllObservers();
     }
 
     public void clearHistory() {
