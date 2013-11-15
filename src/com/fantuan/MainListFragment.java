@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ListView;
 
 import com.googlecode.androidannotations.annotations.*; 
@@ -37,11 +38,15 @@ public class MainListFragment extends Fragment implements
     @ViewById
     Button newdeal;
 
+    @ViewById
+    TextView title;
+
     private boolean mEditMode = false;
 
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
+        title.setText(R.string.app_name);
         button_back.setVisibility(Button.GONE);
         refreshForEditMode();
         button_right.setVisibility(Button.VISIBLE);

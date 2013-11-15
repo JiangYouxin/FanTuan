@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AA团</string>
+    <string name="app_name">AA账单</string>
     <string name="app_name_register">新用户</string>
     <string name="menu_add">添加新成员</string>
     <string name="input_name">请输入新成员姓名</string>
@@ -21,7 +21,7 @@
     <string name="newdeal_welcome_step_1">请输入本次消费人数</string>
     <string name="menu_newdeal">记一笔</string>
     <string name="menu_clear_history">清空历史</string>
-    <string name="person_list_title">成员</string>
+    <string name="person_list_title">账单</string>
     <string name="history_list_title">历史</string>
     <string name="discover_title">发现</string>
     <string name="more_title">更多</string>

@@ -3,6 +3,7 @@ package com.fantuan;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.*; 
 
@@ -27,9 +28,13 @@ public class HistoryListFragment extends Fragment
     @ViewById
     ListView list_view;
 
+    @ViewById
+    TextView title;
+
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
+        title.setText(R.string.history_list_title);
         list_view.setAdapter(mAdapter);
         button_right.setText(R.string.menu_clear_history);
         button_back.setVisibility(Button.GONE);
