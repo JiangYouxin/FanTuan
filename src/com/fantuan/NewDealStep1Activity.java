@@ -37,6 +37,9 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
     @ViewById
     Button button_right;
 
+    @Bean
+    Dialogs mDialogs;
+
     private String[] names;
 
     private boolean[] selected;
@@ -107,7 +110,7 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
             return false;
         for (String n: names) {
             if (name.equals(n)) {
-                showExistDialog();
+                mDialogs.showNameExistsDialog();
                 return false;
             }
         }
@@ -128,13 +131,6 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
         return true;
     }
     
-    private void showExistDialog() {
-        new AlertDialog.Builder(this)
-            .setTitle(R.string.name_exists)
-            .setPositiveButton(R.string.ok, null) 
-            .show();
-    }
-
     @Click
     void button_right() {
         HashSet<String> checkedNames = new HashSet<String>();

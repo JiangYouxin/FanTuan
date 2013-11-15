@@ -91,14 +91,25 @@ public class FanTuanManager {
         return 0;
     }
 
-    private Person findPersonByNameOrAddNew(String name) {
+    public boolean nameExists(String name) {
+        return findPersonByName(name) != null;
+    }
+
+    private Person findPersonByName(String name) {
         for (Person p: mFanTuan.persons) {
             if (p.name.equals(name))
                 return p;
         }
-        Person p = new Person();
-        p.name = name;
-        mFanTuan.persons.add(p);
+        return null;
+    }
+
+    private Person findPersonByNameOrAddNew(String name) {
+        Person p = findPersonByName(name);
+        if (p == null) {
+            p = new Person();
+            p.name = name;
+            mFanTuan.persons.add(p);
+        }
         return p;
     }
 

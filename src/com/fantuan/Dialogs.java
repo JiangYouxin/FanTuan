@@ -24,6 +24,7 @@ public class Dialogs {
     public void modify(final Person p) {
         final EditText edit = new EditText(mActivity);
         edit.setText(p.name);
+        edit.selectAll();
         new AlertDialog.Builder(mActivity)
                 .setTitle(R.string.input_name_modify)
                 .setView(edit)
@@ -31,12 +32,23 @@ public class Dialogs {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String name = edit.getText().toString();
-                        if (name != null && !name.isEmpty())
-                            mFanTuanManager.modifyName(p, name);
+                        if (name != null && !name.isEmpty()) {
+                            if (!mFanTuanManager.nameExists(name))
+                                mFanTuanManager.modifyName(p, name);
+                            else
+                                showNameExistsDialog();
+                        }
                     }
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();
+    }
+
+    public void showNameExistsDialog() {
+        new AlertDialog.Builder(mActivity)
+            .setTitle(R.string.name_exists)
+            .setPositiveButton(R.string.ok, null) 
+            .show();
     }
 
     public void delete(final Person p) {
