@@ -166,4 +166,11 @@ public class FanTuanManager {
         save();
         notifyAllObservers();
     }
+
+    public void clearAll() {
+        mFanTuan.history.clear();
+        mFanTuan.persons.clear();
+        save();
+        notifyAllObservers();
+    }
 }

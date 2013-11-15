@@ -21,9 +21,6 @@ public class Dialogs {
     @Bean
     FanTuanManager mFanTuanManager;
 
-    public void add() {
-    }
-
     public void modify(final Person p) {
         final EditText edit = new EditText(mActivity);
         edit.setText(p.name);
@@ -36,7 +33,6 @@ public class Dialogs {
                         String name = edit.getText().toString();
                         if (name != null && !name.isEmpty())
                             mFanTuanManager.modifyName(p, name);
-                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton(R.string.cancel, null)
@@ -50,7 +46,6 @@ public class Dialogs {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mFanTuanManager.removePerson(p);
-                dialog.dismiss();
             }
         });
         builder.setNegativeButton(R.string.cancel, null);
@@ -64,7 +59,20 @@ public class Dialogs {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mFanTuanManager.clearHistory();
-                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
+    }
+
+    public void clearAll() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle(R.string.clear_all_confirm);
+        builder.setMessage(R.string.clear_all_confirm_message);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mFanTuanManager.clearAll();
             }
         });
         builder.setNegativeButton(R.string.cancel, null);

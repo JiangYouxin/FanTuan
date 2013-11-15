@@ -44,25 +44,11 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
                 HistoryListFragment_.class,
                 null);
         tab_host.addTab(
-                tab_host.newTabSpec("discover").setIndicator(createTabView(R.string.discover_title)),
-                EmptyFragment_.class,
-                null);
-        tab_host.addTab(
                 tab_host.newTabSpec("more").setIndicator(createTabView(R.string.more_title)),
-                EmptyFragment_.class,
+                MoreFragment_.class,
                 null);
         mFanTuanManager.registerObserver(this);
         onModelChanged();
-        handleIntent();
-    }
-
-    private void handleIntent() {
-        if (from == FROM_WELCOME) {
-            tab_host.setCurrentTab(0);
-            MainListFragment f = (MainListFragment) getSupportFragmentManager()
-                .findFragmentByTag("person");
-            f.setEditMode(false);
-        }
     }
 
 	private View createTabView(int id) {
@@ -83,18 +69,15 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
     @Override
     public void onModelChanged() {
         if (mFanTuanManager.getPersonList().isEmpty()) {
-            content_layout.setVisibility(View.GONE);
             welcome_layout.setVisibility(View.VISIBLE);
+            tab_host.setCurrentTab(0);
+            MainListFragment f = (MainListFragment) getSupportFragmentManager()
+                .findFragmentByTag("person");
+            if (f != null)
+                f.setEditMode(false);
         } else {
-            content_layout.setVisibility(View.VISIBLE);
             welcome_layout.setVisibility(View.GONE);
         }
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleIntent();
     }
 
     @Override

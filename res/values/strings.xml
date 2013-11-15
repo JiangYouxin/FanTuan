@@ -25,6 +25,9 @@
     <string name="history_list_title">历史</string>
     <string name="discover_title">发现</string>
     <string name="more_title">更多</string>
+    <string name="clear_all">清除全部账单数据</string>
+    <string name="clear_all_confirm">确认清除</string>
+    <string name="clear_all_confirm_message">将清除所有的账单数据，且无法恢复。</string>
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
     <string name="welcome_message">今天您AA了吗？\n使用AA团记账，免去每次结现金的麻烦。</string>
