@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
+    style="@style/SecondaryText"
     android:paddingTop="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"

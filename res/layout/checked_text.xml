@@ -4,7 +4,7 @@
     android:layout_height="?android:attr/listPreferredItemHeightSmall"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:textAppearance="?android:attr/textAppearanceMedium"
+    style="@style/PrimaryText"
     android:gravity="center_vertical"
     android:checkMark="?android:attr/textCheckMark"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
