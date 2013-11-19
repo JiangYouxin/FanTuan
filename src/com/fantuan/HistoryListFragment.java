@@ -31,6 +31,14 @@ public class HistoryListFragment extends Fragment
     @ViewById
     TextView title;
 
+    @ItemClick
+    void list_viewItemClicked(int position) {
+        int id = (int) mAdapter.getItemId(position);
+        HistoryItemDetailActivity_.intent(getActivity())
+            .historyId(id)
+            .start();
+    }
+
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);

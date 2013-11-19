@@ -1,6 +1,6 @@
 package com.fantuan;
 
-import com.fantuan.model.HistoryItem;
+import com.fantuan.model.NewHistoryItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,7 +20,7 @@ public class HistoryListAdapter extends BaseAdapter {
     Context mContext;
 
     @Override
-    public Object getItem(int position) {
+    public NewHistoryItem getItem(int position) {
         return mFanTuanManager.getHistoryList().get((int)getItemId(position));
     }
 
@@ -45,7 +45,7 @@ public class HistoryListAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        viewHolder.setModel((HistoryItem)getItem(position));
+        viewHolder.setModel(getItem(position));
         return convertView;
     }
 
@@ -53,16 +53,18 @@ public class HistoryListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    private static class ViewHolder {
+    private class ViewHolder {
         private TextView text1;
         private TextView text2;
         public ViewHolder(View view) {
             text1 = (TextView) view.findViewById(android.R.id.text1);
             text2 = (TextView) view.findViewById(android.R.id.text2);
         }
-        public void setModel(HistoryItem history) {
+        public void setModel(NewHistoryItem history) {
             text1.setText(history.time);
-            text2.setText(history.content);
+            text2.setText(mContext.getString(R.string.history_item,
+                        history.persons.size(),
+                        history.whoPay()));
         }
     }
 }

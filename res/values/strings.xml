@@ -33,6 +33,7 @@
     <string name="new_deal_message">以下记录将合并至账单</string>
     <string name="new_deal_message_welcome">账单已生成\n所有临时生成的姓名随后均可修改</string>
     <string name="new_deal_welcome">第一次记账</string>
+    <string name="history_item" formatted="false">人数: %d, 付款人: %s</string>
     <string name="newdeal_step_1" formatted="false">请选择参加者 (已选择 %d 人)</string>
     <string name="newdeal_step_2" formatted="false">请选择由谁买单\n当前选择 %s (余额 %.2f)</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>

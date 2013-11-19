@@ -1,7 +1,7 @@
 package com.fantuan;
 
 import com.fantuan.model.FanTuan;
-import com.fantuan.model.HistoryItem;
+import com.fantuan.model.NewHistoryItem;
 import com.fantuan.model.Person;
 
 import android.content.Context;
@@ -65,8 +65,8 @@ public class FanTuanManager {
         return mFanTuan.persons;
     }
 
-    public ArrayList<HistoryItem> getHistoryList() {
-        return mFanTuan.history;
+    public ArrayList<NewHistoryItem> getHistoryList() {
+        return mFanTuan.newHistory;
     }
 
     public int suggestWhoPay(String[] names) {
@@ -139,20 +139,16 @@ public class FanTuanManager {
             Person p = findPersonByNameOrAddNew(person.name);
             p.current += person.current;
         }
+        NewHistoryItem item = new NewHistoryItem();
+        item.persons = list;
+        item.time = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM)
+                .format(new Date());
+        mFanTuan.newHistory.add(item);
         save();
         notifyAllObservers();
     }
 
-    private void addHistoryItem(String content) {
-        HistoryItem item = new HistoryItem();
-        item.time = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM)
-                .format(new Date());
-        item.content = content;
-        mFanTuan.history.add(item);
-    }
-
     public void modifyName(Person p, String name) {
-        addHistoryItem(mContext.getString(R.string.history_modify, p.name, name));
         if (!name.equals(p.name))
             p.needRename = false;
         p.name = name;
@@ -170,13 +166,13 @@ public class FanTuanManager {
     }
 
     public void clearHistory() {
-        mFanTuan.history.clear();
+        mFanTuan.newHistory.clear();
         save();
         notifyAllObservers();
     }
 
     public void clearAll() {
-        mFanTuan.history.clear();
+        mFanTuan.newHistory.clear();
         mFanTuan.persons.clear();
         save();
         notifyAllObservers();
