@@ -105,7 +105,7 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
     }
 
     private boolean addNew(String name) {
-        if (name == null || name.isEmpty())
+        if (name == null || name.length() == 0)
             return false;
         for (String n: names) {
             if (name.equals(n)) {

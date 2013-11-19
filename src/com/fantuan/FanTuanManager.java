@@ -35,7 +35,7 @@ public class FanTuanManager {
     @AfterInject
     void init() {
         String data = mPref.data().get();
-        if (data != null && !data.isEmpty())
+        if (data != null && data.length() > 0)
             mFanTuan = gson.fromJson(data, FanTuan.class);
         else
             mFanTuan = new FanTuan();

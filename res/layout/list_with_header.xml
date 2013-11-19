@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
     <include layout="@layout/title" />
     <TextView 
         android:id="@+id/list_header"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         style="@style/SecondaryText"
@@ -16,8 +16,8 @@
         android:lineSpacingExtra="3dp"
         />
     <ListView android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_weight="1"
         android:drawSelectorOnTop="false"
         />
