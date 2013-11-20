@@ -129,8 +129,9 @@ public class FanTuanManager {
 
     public String[] generateNames(int count) {
         String[] names = new String[count];
-        for (int i = 0; i < count; i++) 
-            names[i] = mContext.getString(R.string.gen_new_name, i + 1);
+        names[0] = mContext.getString(R.string.gen_new_name_0);
+        for (int i = 1; i < count; i++) 
+            names[i] = mContext.getString(R.string.gen_new_name, i);
         return names;
     }
 
