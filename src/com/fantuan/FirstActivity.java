@@ -22,6 +22,11 @@ public class FirstActivity extends FragmentActivity {
     Button commit;
 
     @AfterViews
+    void init() {
+        count.requestFocus();
+    }
+
+
     @AfterTextChange({R.id.count, R.id.current})
     void refresh() {
         try {

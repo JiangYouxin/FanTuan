@@ -16,8 +16,8 @@
     <string name="next">下一步</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="newdeal_step_3">请输入总消费金额</string>
-    <string name="newdeal_welcome_step_1">请输入本次消费人数</string>
+    <string name="newdeal_step_3">本次AA总金额</string>
+    <string name="newdeal_welcome_step_1">本次AA人数</string>
     <string name="menu_newdeal">记一笔</string>
     <string name="menu_clear_history">清空历史</string>
     <string name="person_list_title">账单</string>
@@ -29,7 +29,8 @@
     <string name="clear_all_confirm_message">将清除所有的账单数据，且无法恢复。</string>
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
-    <string name="welcome_message">今天您AA了吗？\n使用AA账单，不用每次结现金了。</string>
+    <string name="welcome_message">今天您AA了吗？\n使用AA账单，不用再现场分账。</string>
+    <string name="welcome_message_step_1">多人AA，一人买单，秋后算账。</string>
     <string name="new_deal_message">以下记录将合并至账单</string>
     <string name="new_deal_message_welcome">账单已生成\n所有临时生成的姓名随后均可修改</string>
     <string name="new_deal_welcome">第一次记账</string>

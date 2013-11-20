@@ -22,6 +22,7 @@
             android:name="FirstActivity_"
             android:label="@string/new_deal_welcome"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="stateAlwaysVisible"
             android:theme="@style/CustomTheme">
         </activity>
         <activity
