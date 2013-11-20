@@ -29,7 +29,7 @@
     <string name="clear_all_confirm_message">将清除所有的账单数据，且无法恢复。</string>
     <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
-    <string name="welcome_message">今天您AA了吗？\n使用AA账单，免去每次结现金的麻烦。</string>
+    <string name="welcome_message">今天您AA了吗？\n使用AA账单，不用每次结现金了。</string>
     <string name="new_deal_message">以下记录将合并至账单</string>
     <string name="new_deal_message_welcome">账单已生成\n所有临时生成的姓名随后均可修改</string>
     <string name="new_deal_welcome">第一次记账</string>

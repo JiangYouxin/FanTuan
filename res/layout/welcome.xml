@@ -6,24 +6,39 @@
     android:background="#ffffffff"
     >
     <include layout="@layout/title" />
-    <TextView 
-        android:layout_width="fill_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/welcome_message"
-        style="@style/SecondaryText"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:lineSpacingExtra="3dp"
+        android:background="@drawable/welcome"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         />
-    <Button 
-        android:id="@+id/new_deal_welcome"
-        android:text="@string/new_deal_welcome"
-        android:background="@drawable/green_button"
-        style="@style/ButtonText"
+    <LinearLayout 
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    </Button>
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+        <TextView 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/welcome_message"
+            style="@style/SecondaryText"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:lineSpacingExtra="3dp"
+            />
+        <Button 
+            android:id="@+id/new_deal_welcome"
+            android:text="@string/new_deal_welcome"
+            android:background="@drawable/green_button"
+            style="@style/ButtonText"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        </Button>
+    </LinearLayout>
 </LinearLayout>
