@@ -36,10 +36,6 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
                 tab_host.newTabSpec("history").setIndicator(createTabView(R.string.history_list_title)),
                 HistoryListFragment_.class,
                 null);
-        tab_host.addTab(
-                tab_host.newTabSpec("more").setIndicator(createTabView(R.string.more_title)),
-                MoreFragment_.class,
-                null);
         mFanTuanManager.registerObserver(this);
         onModelChanged();
     }

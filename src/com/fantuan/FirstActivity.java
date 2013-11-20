@@ -45,6 +45,7 @@ public class FirstActivity extends FragmentActivity {
 
         NewDealStep4Activity_.intent(this)
             .names(names)
+            .genName(true)
             .whoPay(0)
             .current(Double.valueOf(current.getText().toString()))
             .messageId(R.string.new_deal_message_welcome)

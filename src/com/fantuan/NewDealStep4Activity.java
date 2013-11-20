@@ -37,6 +37,9 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     @Extra
     boolean sendResult;
 
+    @Extra
+    boolean genName;
+
     @Bean
     PersonListAdapter mAdapter;
 
@@ -59,7 +62,7 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        mFanTuanManager.mergePersonList(mPersonList);
+        mFanTuanManager.mergePersonList(mPersonList, genName);
         if (sendResult) {
             setResult(0);
             finish();

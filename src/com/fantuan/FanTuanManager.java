@@ -103,11 +103,12 @@ public class FanTuanManager {
         return null;
     }
 
-    private Person findPersonByNameOrAddNew(String name) {
+    private Person findPersonByNameOrAddNew(String name, boolean genName) {
         Person p = findPersonByName(name);
         if (p == null) {
             p = new Person();
             p.name = name;
+            p.needRename = genName;
             mFanTuan.persons.add(p);
         }
         return p;
@@ -135,9 +136,9 @@ public class FanTuanManager {
         return names;
     }
 
-    public void mergePersonList(ArrayList<Person> list) {
+    public void mergePersonList(ArrayList<Person> list, boolean genName) {
         for (Person person: list) {
-            Person p = findPersonByNameOrAddNew(person.name);
+            Person p = findPersonByNameOrAddNew(person.name, genName);
             p.current += person.current;
         }
         NewHistoryItem item = new NewHistoryItem();

@@ -39,7 +39,13 @@ public class MainListFragment extends Fragment implements
     Button newdeal;
 
     @ViewById
+    Button clear_all;
+
+    @ViewById
     TextView title;
+
+    @ViewById
+    TextView list_header;
 
     private boolean mEditMode = false;
 
@@ -48,10 +54,11 @@ public class MainListFragment extends Fragment implements
         mFanTuanManager.registerObserver(this);
         title.setText(R.string.app_name);
         button_back.setVisibility(Button.GONE);
-        refreshForEditMode();
         button_right.setVisibility(Button.VISIBLE);
         mAdapter.setPersonList(mFanTuanManager.getPersonList());
+        mAdapter.setShowIcon(true);
         list_view.setAdapter(mAdapter);
+        refreshForEditMode();
         registerForContextMenu(list_view);
     }
 
@@ -61,6 +68,9 @@ public class MainListFragment extends Fragment implements
                 R.string.finish: R.string.edit);
         newdeal.setVisibility(mEditMode ? 
                 Button.GONE: Button.VISIBLE);
+        clear_all.setVisibility(mEditMode ? 
+                Button.VISIBLE: Button.GONE);
+        onModelChanged();
     }
 
     public void setEditMode(boolean editMode) {
@@ -76,7 +86,17 @@ public class MainListFragment extends Fragment implements
 
     @Override
     public void onModelChanged() {
-        mAdapter.refresh();
+        boolean showHeader = false;
+        if (!mEditMode) {
+            for (Person p: mFanTuanManager.getPersonList()) {
+                if (p.needRename)
+                    showHeader = true;
+            }
+            list_header.setVisibility(showHeader ? TextView.VISIBLE : TextView.GONE);
+            mAdapter.refresh();
+        } else {
+            list_header.setVisibility(TextView.GONE);
+        }
     }
 
     @Click
@@ -87,6 +107,11 @@ public class MainListFragment extends Fragment implements
     @Click
     void newdeal() {
         NewDealStep1Activity_.intent(getActivity()).start();
+    }
+
+    @Click
+    void clear_all() {
+        mDialog.clearAll();
     }
 
     @Override

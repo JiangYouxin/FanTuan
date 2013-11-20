@@ -27,8 +27,15 @@ public class PersonListAdapter extends BaseAdapter {
 
     private boolean mEditMode;
 
+    private boolean mShowIcon;
+
     public void setEditMode(boolean editMode) {
         mEditMode = editMode;
+        notifyDataSetChanged();
+    }
+
+    public void setShowIcon(boolean showIcon) {
+        mShowIcon = showIcon;
         notifyDataSetChanged();
     }
 
@@ -65,10 +72,11 @@ public class PersonListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup container) {
         PersonView personView;
         if (convertView == null)
-            personView = PersonView_.build(mContext);
+            personView = (PersonView) LayoutInflater.from(mContext) 
+                .inflate(R.layout.person_view, null);
         else
             personView = (PersonView) convertView;
-        personView.bind(getItem(position), mEditMode, getCount() > 2);
+        personView.bind(getItem(position), mEditMode, getCount() > 2, mShowIcon);
         return personView;
     }
 

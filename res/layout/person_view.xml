@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<com.fantuan.view.PersonView_ xmlns:android="http://schemas.android.com/apk/res/android"
     android:descendantFocusability="blocksDescendants"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    >
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="6dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_contact_picture"
+        />
     <include 
         android:layout_width="wrap_content"
         android:layout_weight="1"
         android:layout_height="wrap_content" 
+        android:layout_gravity="center"
         layout="@layout/left_right" />
     <Button 
         android:id="@+id/rename"
@@ -22,4 +34,4 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</merge>
+</com.fantuan.view.PersonView_>
