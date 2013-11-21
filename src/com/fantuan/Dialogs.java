@@ -32,7 +32,7 @@ public class Dialogs {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String name = edit.getText().toString();
-                        if (name != null && name.length() > 0) {
+                        if (name != null && name.length() > 0 && !name.equals(p.name)) {
                             if (!mFanTuanManager.nameExists(name))
                                 mFanTuanManager.modifyName(p, name);
                             else
