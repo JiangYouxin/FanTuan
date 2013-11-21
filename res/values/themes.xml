@@ -26,22 +26,22 @@
     </style>
     <style name="PrimaryText">
         <item name="android:textColor">#ff333333</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="PrimaryTextSmall">
         <item name="android:textColor">#ff333333</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
     <style name="SecondaryText">
         <item name="android:textColor">#ff787878</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
     <style name="LinkText">
         <item name="android:textColor">#ff3399ff</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
     <style name="InfoText">
         <item name="android:textColor">#ff898989</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
 </resources>
