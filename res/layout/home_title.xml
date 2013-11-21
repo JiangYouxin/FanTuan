@@ -8,17 +8,6 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="fill_parent" >
-        <Button 
-            style="@style/TitleButtonText"
-            android:id="@+id/button_back" 
-            android:text="@string/back"
-            android:paddingLeft="20dp" 
-            android:paddingRight="20dp" 
-            android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
-            android:layout_gravity="center|left" 
-            android:background="@drawable/mm_title_btn_right"
-            />
     </FrameLayout>
     <TextView 
         android:id="@+id/title" 
@@ -42,7 +31,7 @@
             android:layout_width="wrap_content" 
             android:layout_height="wrap_content" 
             android:layout_gravity="center|right" 
-            android:background="@drawable/mm_title_act_btn"
+            android:background="@drawable/mm_title_btn_right"
             android:visibility="gone" />
     </FrameLayout>
 </com.fantuan.view.TitleView_>

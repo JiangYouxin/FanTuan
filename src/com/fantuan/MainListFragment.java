@@ -33,9 +33,6 @@ public class MainListFragment extends Fragment implements
     Button button_right;
 
     @ViewById
-    Button button_back;
-
-    @ViewById
     Button newdeal;
 
     @ViewById
@@ -53,7 +50,6 @@ public class MainListFragment extends Fragment implements
     void init() {
         mFanTuanManager.registerObserver(this);
         title.setText(R.string.app_name);
-        button_back.setVisibility(Button.GONE);
         button_right.setVisibility(Button.VISIBLE);
         mAdapter.setPersonList(mFanTuanManager.getPersonList());
         mAdapter.setShowIcon(true);
