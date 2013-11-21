@@ -153,7 +153,14 @@ public class FanTuanManager {
     public void modifyName(Person p, String name) {
         if (!name.equals(p.name))
             p.needRename = false;
+        String oldName = p.name;
         p.name = name;
+        for (NewHistoryItem item: mFanTuan.newHistory) {
+            for (Person person: item.persons) {
+                if (person.name.equals(oldName))
+                    person.name = name;
+            }
+        }
         save();
         notifyAllObservers();
     }
