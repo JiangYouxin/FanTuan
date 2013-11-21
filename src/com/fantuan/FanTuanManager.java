@@ -183,6 +183,7 @@ public class FanTuanManager {
     public void clearAll() {
         mFanTuan.newHistory.clear();
         mFanTuan.persons.clear();
+        mPref.edit().lastSelected().put(null).apply();
         save();
         notifyAllObservers();
     }

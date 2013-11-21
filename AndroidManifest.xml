@@ -41,6 +41,7 @@
             android:name="NewDealStep3Activity_"
             android:label="@string/menu_newdeal"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="stateAlwaysVisible"
             android:theme="@style/CustomTheme">
         </activity>
         <activity
