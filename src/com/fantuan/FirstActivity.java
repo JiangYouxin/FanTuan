@@ -48,7 +48,7 @@ public class FirstActivity extends FragmentActivity {
             .genName(true)
             .whoPay(0)
             .current(Double.valueOf(current.getText().toString()))
-            .messageId(R.string.new_deal_message_welcome)
+            .message(getString(R.string.new_deal_message_welcome))
             .start();
     }
 }

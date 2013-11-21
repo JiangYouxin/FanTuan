@@ -54,7 +54,7 @@ public class NewDealStep3Activity extends FragmentActivity {
             .names(names)
             .whoPay(whoPay)
             .current(db)
-            .messageId(R.string.new_deal_message)
+            .message(getString(R.string.new_deal_message))
             .start();
     }
 }

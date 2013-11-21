@@ -32,7 +32,7 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     double current;
 
     @Extra
-    int messageId;
+    String message;
 
     @Extra
     boolean sendResult;
@@ -53,7 +53,7 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     void init() {
         mPersonList = mFanTuanManager.generatePersonList(names, whoPay, current);
         mAdapter.setPersonList(mPersonList);
-        list_header.setText(messageId);
+        list_header.setText(message);
         View button = getLayoutInflater().inflate(R.layout.button, null);
         button.findViewById(R.id.commit).setOnClickListener(this);
         list_view.addFooterView(button);
@@ -64,7 +64,7 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
     public void onClick(View v) {
         mFanTuanManager.mergePersonList(mPersonList, genName);
         if (sendResult) {
-            setResult(0);
+            setResult(1);
             finish();
         }
         else {

@@ -59,19 +59,28 @@ public class RemovePersonStep1Activity extends FragmentActivity {
     @Click
     void button_right() {
         String[] names = new String[] {nameToRemove, this.names.get(whoPay) };
-        double current = mFanTuanManager.getCurrentByName(nameToRemove) * 2;
+        double current = mFanTuanManager.getCurrentByName(nameToRemove);
+        String message;
+        if (current > 0)
+            message = getString(R.string.remove_person_message,
+                    names[1], names[0], current);
+        else
+            message = getString(R.string.remove_person_message,
+                    names[0], names[1], -current);
+        message += "\n";
+        message += getString(R.string.new_deal_message);
         NewDealStep4Activity_.intent(this)
             .names(names)
             .whoPay(1)
-            .current(current)
-            .messageId(R.string.new_deal_message)
+            .current(current * 2)
+            .message(message)
             .sendResult(true)
             .startForResult(0);
     }
 
     @Override
     protected void onActivityResult(int code, int resultCode, Intent data) {
-        if (code == 0 && resultCode == 0) {
+        if (code == 0 && resultCode == 1) {
             mFanTuanManager.removePerson(nameToRemove);
             MainActivity_.intent(this)
                 .flags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
