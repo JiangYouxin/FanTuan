@@ -25,6 +25,10 @@
         <item name="android:textColor">#ff787878</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
+    <style name="LinkText">
+        <item name="android:textColor">#ff3399ff</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
     <style name="InfoText">
         <item name="android:textColor">#ff898989</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>

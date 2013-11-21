@@ -93,10 +93,10 @@ public class MainListFragment extends Fragment implements
                     showHeader = true;
             }
             list_header.setVisibility(showHeader ? TextView.VISIBLE : TextView.GONE);
-            mAdapter.refresh();
         } else {
             list_header.setVisibility(TextView.GONE);
         }
+        mAdapter.refresh();
     }
 
     @Click

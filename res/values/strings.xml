@@ -17,6 +17,7 @@
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="newdeal_step_3">本次AA总金额</string>
+    <string name="newdeal_step_3_info_1">本次AA买单人</string>
     <string name="newdeal_welcome_step_1">本次AA人数</string>
     <string name="menu_newdeal">记一笔</string>
     <string name="menu_clear_history">清空历史</string>
@@ -37,8 +38,8 @@
     <string name="gen_new_name_0">买单人</string>
     <string name="suggest_edit">小提示: 点右上角 [编辑] 可以修改姓名</string>
     <string name="history_item" formatted="false">人数: %d, 付款人: %s</string>
-    <string name="newdeal_step_1" formatted="false">请选择参加者 (已选择 %d 人)</string>
-    <string name="newdeal_step_2" formatted="false">请选择由谁买单\n当前选择 %s (余额 %.2f)</string>
+    <string name="newdeal_step_1" formatted="false">选择本次AA参加者 (已选择 %d 人)</string>
+    <string name="newdeal_step_2" formatted="false">选择本次AA买单人\n当前选择 %s (余额 %.2f)</string>
     <string name="history_new_deal" formatted="false">%s 买单 %.2f, 参加者: %s</string>
     <string name="history_add_person" formatted="false">添加新成员: %s</string>
     <string name="history_modify" formatted="false">%s 改名为 %s</string>

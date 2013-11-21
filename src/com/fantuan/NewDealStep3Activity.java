@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.googlecode.androidannotations.annotations.*; 
 
@@ -18,6 +19,12 @@ public class NewDealStep3Activity extends FragmentActivity {
     @ViewById
     Button commit;
 
+    @ViewById
+    TextView count;
+
+    @ViewById
+    TextView who;
+
     @Extra
     String[] names;
 
@@ -25,6 +32,11 @@ public class NewDealStep3Activity extends FragmentActivity {
     int whoPay;
 
     @AfterViews
+    void init() {
+        count.setText(String.format("%d", names.length));
+        who.setText(names[whoPay]);
+    }
+
     @AfterTextChange(R.id.current)
     void refresh() {
         try {

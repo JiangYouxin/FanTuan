@@ -3,14 +3,16 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
     android:paddingLeft="2dp"
-    android:paddingRight="2dp"
+    android:paddingRight="10dp"
     >
-    <Button 
+    <TextView
         android:id="@+id/add_new"
         android:text="@string/menu_add"
-        android:layout_width="fill_parent"
+        style="@style/LinkText"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    </Button>
+    </TextView>
 </LinearLayout>
