@@ -81,7 +81,7 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
         mAdapter = new CustomAdapter();
         View footer = getLayoutInflater().inflate(R.layout.gray_button, null);
         footer.findViewById(R.id.add_new).setOnClickListener(this);
-        list_view.addHeaderView(footer);
+        list_view.addHeaderView(footer, null, false);
         list_view.setAdapter(mAdapter);
         button_right.setVisibility(Button.VISIBLE);
         refresh();

@@ -55,15 +55,24 @@ public class MainActivity extends FragmentActivity implements FanTuanManager.Obs
         super.onDestroy();
     }
 
+    private void resetPersonList() {
+        MainListFragment f = (MainListFragment) getSupportFragmentManager()
+            .findFragmentByTag("person");
+        if (f != null)
+            f.setEditMode(false);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        resetPersonList();
+    }
+
     @Override
     public void onModelChanged() {
         if (mFanTuanManager.getPersonList().isEmpty()) {
             welcome_layout.setVisibility(View.VISIBLE);
             tab_host.setCurrentTab(0);
-            MainListFragment f = (MainListFragment) getSupportFragmentManager()
-                .findFragmentByTag("person");
-            if (f != null)
-                f.setEditMode(false);
+            resetPersonList();
         } else {
             welcome_layout.setVisibility(View.GONE);
         }

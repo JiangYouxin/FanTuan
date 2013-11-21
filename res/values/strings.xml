@@ -35,7 +35,6 @@
     <string name="new_deal_message">以下记录将合并至账单</string>
     <string name="new_deal_message_welcome">请核对账单\n姓名为临时产生，随后可修改</string>
     <string name="new_deal_welcome">第一次记账</string>
-    <string name="gen_new_name_0">买单人</string>
     <string name="suggest_edit">小提示: 点右上角 [编辑] 可以修改姓名</string>
     <string name="remove_person_message" formatted="false">请 %s 向 %s 支付 %.2f</string>
     <string name="history_item" formatted="false">人数: %d, 付款人: %s</string>

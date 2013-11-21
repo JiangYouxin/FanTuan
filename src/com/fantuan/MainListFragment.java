@@ -63,7 +63,7 @@ public class MainListFragment extends Fragment implements
         button_right.setText(mEditMode ? 
                 R.string.finish: R.string.edit);
         newdeal.setVisibility(mEditMode ? 
-                Button.GONE: Button.VISIBLE);
+                Button.VISIBLE: Button.GONE);
         clear_all.setVisibility(mEditMode ? 
                 Button.VISIBLE: Button.GONE);
         onModelChanged();
