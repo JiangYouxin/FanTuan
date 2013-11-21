@@ -51,19 +51,6 @@ public class Dialogs {
             .show();
     }
 
-    public void clearHistory() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle(R.string.confirm_clear_history_message);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mFanTuanManager.clearHistory();
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, null);
-        builder.show();
-    }
-
     public void clearAll() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder.setTitle(R.string.clear_all_confirm);

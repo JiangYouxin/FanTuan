@@ -33,9 +33,6 @@ public class MainListFragment extends Fragment implements
     Button button_right;
 
     @ViewById
-    Button newdeal;
-
-    @ViewById
     Button clear_all;
 
     @ViewById
@@ -49,7 +46,7 @@ public class MainListFragment extends Fragment implements
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
-        title.setText(R.string.app_name);
+        title.setText(R.string.person_list_title);
         button_right.setVisibility(Button.VISIBLE);
         mAdapter.setPersonList(mFanTuanManager.getPersonList());
         mAdapter.setShowIcon(true);
@@ -62,8 +59,6 @@ public class MainListFragment extends Fragment implements
         mAdapter.setEditMode(mEditMode);
         button_right.setText(mEditMode ? 
                 R.string.finish: R.string.edit);
-        newdeal.setVisibility(mEditMode ? 
-                Button.VISIBLE: Button.GONE);
         clear_all.setVisibility(mEditMode ? 
                 Button.VISIBLE: Button.GONE);
         onModelChanged();
@@ -98,11 +93,6 @@ public class MainListFragment extends Fragment implements
     @Click
     void button_right() {
         setEditMode(!mEditMode);
-    }
-
-    @Click
-    void newdeal() {
-        NewDealStep1Activity_.intent(getActivity()).start();
     }
 
     @Click

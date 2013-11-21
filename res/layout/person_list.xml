@@ -22,13 +22,6 @@
         android:layout_weight="1"
         android:drawSelectorOnTop="false"
         />
-    <Button android:id="@+id/newdeal"
-        style="@style/ButtonText"
-        android:background="@drawable/green_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_newdeal"
-        />
     <Button 
         android:id="@+id/clear_all"
         android:text="@string/clear_all"

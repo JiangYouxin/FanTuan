@@ -20,15 +20,13 @@
     <string name="newdeal_step_3_info_1">本次AA买单人</string>
     <string name="newdeal_welcome_step_1">本次AA人数</string>
     <string name="menu_newdeal">记一笔</string>
-    <string name="menu_clear_history">清空历史</string>
-    <string name="person_list_title">账单</string>
-    <string name="history_list_title">历史</string>
+    <string name="person_list_title">汇总</string>
+    <string name="history_list_title">账单</string>
     <string name="discover_title">发现</string>
     <string name="more_title">更多</string>
     <string name="clear_all">清除全部账单数据</string>
     <string name="clear_all_confirm">确认清除</string>
     <string name="clear_all_confirm_message">将清除所有的账单数据，且无法恢复。</string>
-    <string name="confirm_clear_history">确认清空历史</string>
     <string name="confirm_clear_history_message">确认要清空历史吗？</string>
     <string name="welcome_message">今天您AA了吗？\n使用AA账单，不用再现场分账。</string>
     <string name="welcome_message_step_1">多人AA，一人买单，秋后算账。</string>

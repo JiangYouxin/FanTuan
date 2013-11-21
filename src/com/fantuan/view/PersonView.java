@@ -49,7 +49,8 @@ public class PersonView extends LinearLayout {
         this.p = p;
         text1.setText(p.name);
         text2.setText(String.format("%.2f", p.current));
-        text2.setTextColor(p.current >= 0 ? 0xff70c656: 0xffef4444);
+        text2.setTextAppearance(getContext(), p.current >= 0 
+                ? R.style.PrimaryTextGreen: R.style.PrimaryTextRed);
         icon.setVisibility(showIcon ? ImageView.VISIBLE : ImageView.GONE);
         rename.setVisibility(editMode ? TextView.VISIBLE: TextView.GONE);
         delete.setVisibility(editMode && canDelete ? TextView.VISIBLE: TextView.GONE);

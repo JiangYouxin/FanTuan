@@ -39,9 +39,9 @@ public class HistoryListFragment extends Fragment
     @AfterViews
     void init() {
         mFanTuanManager.registerObserver(this);
-        title.setText(R.string.history_list_title);
+        title.setText(R.string.app_name);
         list_view.setAdapter(mAdapter);
-        button_right.setText(R.string.menu_clear_history);
+        button_right.setText(R.string.menu_newdeal);
         onModelChanged();
     }
 
@@ -62,6 +62,6 @@ public class HistoryListFragment extends Fragment
 
     @Click
     void button_right() {
-        mDialog.clearHistory();
+        NewDealStep1Activity_.intent(getActivity()).start();
     }
 }

@@ -28,6 +28,14 @@
         <item name="android:textColor">#ff333333</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
+    <style name="PrimaryTextRed">
+        <item name="android:textColor">#ffef4444</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="PrimaryTextGreen">
+        <item name="android:textColor">#ff70c656</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
     <style name="PrimaryTextSmall">
         <item name="android:textColor">#ff333333</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
