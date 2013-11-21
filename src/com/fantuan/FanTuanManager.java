@@ -3,6 +3,7 @@ package com.fantuan;
 import com.fantuan.model.FanTuan;
 import com.fantuan.model.NewHistoryItem;
 import com.fantuan.model.Person;
+import com.fantuan.model.PersonHistoryItem;
 
 import android.content.Context;
 
@@ -67,6 +68,23 @@ public class FanTuanManager {
 
     public ArrayList<NewHistoryItem> getHistoryList() {
         return mFanTuan.newHistory;
+    }
+
+    public ArrayList<PersonHistoryItem> generatePersonHistoryList(String name) {
+        ArrayList<PersonHistoryItem> list = new ArrayList<PersonHistoryItem>();
+        for (int i = mFanTuan.newHistory.size() - 1; i >= 0; i--) {
+            NewHistoryItem item = mFanTuan.newHistory.get(i);
+            for (Person p: item.persons) {
+                if (p.name.equals(name)) {
+                    PersonHistoryItem hItem = new PersonHistoryItem();
+                    hItem.historyId = i;
+                    hItem.time = item.time;
+                    hItem.current = p.current;
+                    list.add(hItem);
+                }
+            }
+        }
+        return list;
     }
 
     public int suggestWhoPay(String[] names) {

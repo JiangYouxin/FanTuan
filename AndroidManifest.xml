@@ -62,5 +62,11 @@
             android:launchMode="singleTop"
             android:theme="@style/CustomTheme">
         </activity>
+        <activity
+            android:name="PersonDetailActivity_"
+            android:label="@string/person_history_list_title"
+            android:launchMode="singleTop"
+            android:theme="@style/CustomTheme">
+        </activity>
     </application>
 </manifest> 

@@ -100,6 +100,13 @@ public class MainListFragment extends Fragment implements
         mDialog.clearAll();
     }
 
+    @ItemClick
+    void list_viewItemClicked(int position) {
+        PersonDetailActivity_.intent(getActivity())
+            .name(mAdapter.getItem(position).name)
+            .start();
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenu.ContextMenuInfo menuInfo) {
