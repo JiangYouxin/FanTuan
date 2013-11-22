@@ -11,13 +11,12 @@ public class NewHistoryItem {
     }
 
     public double getCurrent() {
-        double current = persons.get(0).current;
-        int count = persons.size();
-        if (current > 0)
-            current = current / (count - 1) * count;
-        else
-            current = -current * count;
-        return current;
+        for (Person p: persons) {
+            if (p.current > 0) {
+                return p.current;
+            }
+        }
+        return 0;
     }
 
     public String whoPay() {

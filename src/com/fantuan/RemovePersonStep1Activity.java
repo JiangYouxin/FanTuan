@@ -71,7 +71,7 @@ public class RemovePersonStep1Activity extends FragmentActivity {
         message += getString(R.string.new_deal_message);
         NewDealStep4Activity_.intent(this)
             .names(names)
-            .whoPay(1)
+            .whoPay(-1)
             .current(current * 2)
             .message(message)
             .sendResult(true)

@@ -51,7 +51,10 @@ public class NewDealStep4Activity extends FragmentActivity implements View.OnCli
 
     @AfterViews
     void init() {
-        mPersonList = mFanTuanManager.generatePersonList(names, whoPay, current);
+        if (whoPay == -1)
+            mPersonList = mFanTuanManager.generatePersonList(names, current);
+        else
+            mPersonList = mFanTuanManager.generatePersonList(names, whoPay, current);
         mAdapter.setPersonList(mPersonList);
         list_header.setText(message);
         View button = getLayoutInflater().inflate(R.layout.button, null);

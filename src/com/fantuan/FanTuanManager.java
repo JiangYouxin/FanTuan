@@ -132,15 +132,33 @@ public class FanTuanManager {
         return p;
     }
 
+    public ArrayList<Person> generatePersonList(String [] names, double current) {
+        ArrayList<Person> list = new ArrayList<Person>();
+        double perPerson = current / 2;
+        Person p = new Person();
+        p.name = names[0];
+        p.current = -perPerson;
+        list.add(p);
+        p = new Person();
+        p.name = names[1]; 
+        p.current = perPerson;
+        list.add(p);
+        return list;
+    }
+
     public ArrayList<Person> generatePersonList(String [] names, int whoPay, double current) {
         ArrayList<Person> list = new ArrayList<Person>();
         double perPerson = current / names.length;
         for (int i = 0; i < names.length; i++) {
+            if (i == whoPay) {
+                Person p = new Person();
+                p.name = names[i];
+                p.current = current;
+                list.add(p);
+            }
             Person p = new Person();
             p.name = names[i]; 
             p.current = -perPerson;
-            if (i == whoPay)
-                p.current += current;
             list.add(p);
         }
         return list;

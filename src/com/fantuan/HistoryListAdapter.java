@@ -65,7 +65,7 @@ public class HistoryListAdapter extends BaseAdapter {
         public void setModel(NewHistoryItem history) {
             text1.setText(history.time);
             text2.setText(mContext.getString(R.string.history_item,
-                        history.persons.size(),
+                        history.persons.size() - 1,
                         history.whoPay()));
             current.setText(String.format("%.2f", history.getCurrent()));
         }
