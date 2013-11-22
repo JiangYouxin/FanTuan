@@ -1,8 +1,8 @@
 all:
-	ant debug
+	ant release 
 
 install:
-	adb install -r bin/MainActivity-debug.apk
+	adb install -r bin/MainActivity-release.apk
 
 clean:
 	ant clean
