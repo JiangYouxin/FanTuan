@@ -164,13 +164,6 @@ public class FanTuanManager {
         return list;
     }
 
-    public String[] generateNames(int count) {
-        String[] names = new String[count];
-        for (int i = 0; i < count; i++) 
-            names[i] = mContext.getString(R.string.gen_new_name, i + 1);
-        return names;
-    }
-
     public void mergePersonList(ArrayList<Person> list, boolean genName) {
         for (Person person: list) {
             Person p = findPersonByNameOrAddNew(person.name, genName);

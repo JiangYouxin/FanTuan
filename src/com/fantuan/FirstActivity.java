@@ -19,36 +19,30 @@ public class FirstActivity extends FragmentActivity {
     EditText current;
 
     @ViewById
-    Button commit;
+    Button button_right;
 
     @AfterViews
     void init() {
+        button_right.setVisibility(Button.VISIBLE);
         count.requestFocus();
     }
-
 
     @AfterTextChange({R.id.count, R.id.current})
     void refresh() {
         try {
             double db = Double.valueOf(current.getText().toString());
             int it = Integer.valueOf(count.getText().toString());
-            commit.setEnabled(db > 0 && it > 1);
+            button_right.setEnabled(db > 0 && it > 1);
         } catch (Exception e) {
-            commit.setEnabled(false);
+            button_right.setEnabled(false);
         }
     }
 
     @Click
-    void commit() {
-        String[] names = mFanTuanManager.generateNames(
-            Integer.valueOf(count.getText().toString()));
-
-        NewDealStep4Activity_.intent(this)
-            .names(names)
-            .genName(true)
-            .whoPay(0)
+    void button_right() {
+        FirstStep2Activity_.intent(this)
+            .count(Integer.valueOf(count.getText().toString()))
             .current(Double.valueOf(current.getText().toString()))
-            .message(getString(R.string.new_deal_message_welcome))
             .start();
     }
 }

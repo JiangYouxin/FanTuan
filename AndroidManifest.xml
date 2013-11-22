@@ -26,6 +26,13 @@
             android:theme="@style/CustomTheme">
         </activity>
         <activity
+            android:name="FirstStep2Activity_"
+            android:label="@string/new_deal_welcome"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:theme="@style/CustomTheme">
+        </activity>
+        <activity
             android:name="NewDealStep1Activity_"
             android:label="@string/menu_newdeal"
             android:launchMode="singleTop"

@@ -17,7 +17,7 @@ public class NewDealStep3Activity extends FragmentActivity {
     EditText current;
 
     @ViewById
-    Button commit;
+    Button button_right;
 
     @ViewById
     TextView count;
@@ -35,20 +35,21 @@ public class NewDealStep3Activity extends FragmentActivity {
     void init() {
         count.setText(String.format("%d", names.length));
         who.setText(names[whoPay]);
+        button_right.setVisibility(Button.VISIBLE);
     }
 
     @AfterTextChange(R.id.current)
     void refresh() {
         try {
             double db = Double.valueOf(current.getText().toString());
-            commit.setEnabled(db > 0);
+            button_right.setEnabled(db > 0);
         } catch (Exception e) {
-            commit.setEnabled(false);
+            button_right.setEnabled(false);
         }
     }
 
     @Click
-    void commit() {
+    void button_right() {
         double db = Double.valueOf(current.getText().toString());
         NewDealStep4Activity_.intent(this)
             .names(names)

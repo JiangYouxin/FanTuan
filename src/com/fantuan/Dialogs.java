@@ -23,6 +23,7 @@ public class Dialogs {
 
     public void modify(final Person p) {
         final EditText edit = new EditText(mActivity);
+        edit.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         edit.setText(p.name);
         edit.selectAll();
         new AlertDialog.Builder(mActivity)

@@ -3,19 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <include layout="@layout/home_title" />
-    <TextView 
-        android:id="@+id/list_header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/suggest_edit"
-        style="@style/SecondaryText"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:lineSpacingExtra="3dp"
-        />
     <ListView android:id="@+id/list_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

@@ -3,6 +3,7 @@ package com.fantuan;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,7 @@ public class NewDealStep1Activity extends FragmentActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         final EditText edit = new EditText(this);
+        edit.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         new AlertDialog.Builder(this)
             .setTitle(R.string.input_name)
             .setView(edit)

@@ -76,13 +76,5 @@
                 android:layout_marginRight="6dp"
                 />
         </LinearLayout>
-        <Button 
-            android:id="@+id/commit"
-            android:text="@string/make"
-            android:background="@drawable/green_button"
-            style="@style/ButtonText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-        </Button>
     </LinearLayout>
 </LinearLayout>

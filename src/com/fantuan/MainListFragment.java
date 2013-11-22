@@ -77,16 +77,6 @@ public class MainListFragment extends Fragment implements
 
     @Override
     public void onModelChanged() {
-        boolean showHeader = false;
-        if (!mEditMode) {
-            for (Person p: mFanTuanManager.getPersonList()) {
-                if (p.needRename)
-                    showHeader = true;
-            }
-            list_header.setVisibility(showHeader ? TextView.VISIBLE : TextView.GONE);
-        } else {
-            list_header.setVisibility(TextView.GONE);
-        }
         mAdapter.refresh();
     }
 

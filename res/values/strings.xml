@@ -32,13 +32,13 @@
     <string name="welcome_message">今天您AA了吗？\n使用AA账单，不用再现场分账。</string>
     <string name="welcome_message_step_1">多人AA，一人买单，秋后算账。</string>
     <string name="new_deal_message">以下记录将合并至账单</string>
-    <string name="new_deal_message_welcome">请核对账单\n姓名为临时产生，随后可修改</string>
     <string name="new_deal_welcome">第一次记账</string>
-    <string name="suggest_edit">小提示: 点右上角 [编辑] 可以修改姓名</string>
+    <string name="first_step_2_message">请输入买单人和其它成员姓名</string>
+    <string name="gen_new_name_0">买单人</string>
     <string name="remove_person_message" formatted="false">请 %s 向 %s 支付 %.2f</string>
     <string name="history_item" formatted="false">人数: %d, 付款人: %s</string>
     <string name="newdeal_step_1" formatted="false">选择本次AA参加者 (已选择 %d 人)</string>
     <string name="newdeal_step_2" formatted="false">选择本次AA买单人\n当前选择 %s (余额 %.2f)</string>
-    <string name="gen_new_name" formatted="false">无名氏%d</string>
+    <string name="gen_new_name" formatted="false">成员%d</string>
     <string name="person_detail_message" formatted="false">%s 的个人账单</string>
 </resources>
